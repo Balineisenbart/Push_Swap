@@ -1,7 +1,7 @@
 # Push_Swap
 
 Step 1: Parse Input
-Convert input arguments into integers and store them in stack A.
+Convert input arguments into integers and store them in stack A. <<<here, parsing is written but not implemented in main. also print it>>>
 Ensure error handling:
 Check for non-integer input.
 Verify no duplicate values.
