@@ -1,11 +1,11 @@
 # Push_Swap
 
 Step 1: Parse Input
-Convert input arguments into integers and store them in stack A. <<<here, parsing is written but not implemented in main. also print it>>>
-Ensure error handling:
-Check for non-integer input.
-Verify no duplicate values.
-Handle integer overflows.
+X ---- Convert input arguments into integers and store them in stack A. 
+X ---- Ensure error handling:
+X ---- Check for non-integer input.
+X ---- Verify no duplicate values.
+Handle integer overflows. <<<<verify that ft_atoi handles this and frees stack if error occurs>>>>
 
 Step 2: Divide into Chunks
 Pre-sort the array to calculate chunk boundaries.
