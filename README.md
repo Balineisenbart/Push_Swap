@@ -7,6 +7,9 @@ X ---- Check for non-integer input.
 X ---- Verify no duplicate values.
 Handle integer overflows. <<<<verify that ft_atoi handles this and frees stack if error occurs>>>>
 
+Step 2a: create operations
+write code for operations. pa, pb, sa, sb, ss, ra, rb, rr, rra, rrb, rrr
+
 Step 2: Divide into Chunks
 Pre-sort the array to calculate chunk boundaries.
 Example: For 100 numbers, divide into chunks of 10 numbers each.

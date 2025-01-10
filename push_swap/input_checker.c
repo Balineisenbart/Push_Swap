@@ -2,17 +2,15 @@
 int is_valid(char *numbers)
 {
     int i;
-    int flag;
 
     i = 0;
-    sign = 0;
     if (number[0] == '-' || number[0] == '+')
         i++;
-    while (numbers != '\0')
+    if (numbers[i] == '\0')
+        return 0;
+    while (numbers[i] != '\0')
     {
-        if (number[i] == '-' || number[i] == '+')
-            sign = 1;
-        if (numbers[i] <= '0' || numbers[i] >= '9' && sign != 0 )
+        if (numbers[i] < '0' || numbers[i] > '9')
             return 0;
         i++;
     }
