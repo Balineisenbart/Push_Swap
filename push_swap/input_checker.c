@@ -17,13 +17,31 @@ int is_valid(char *numbers)
     return 1;
 }
 
-int has_duplicates(t_node *stack, int value)
+int has_duplicates(t_node *stack, int input_value)
 {
-    while (stack)
+    t_node *start = stack;
+    while (1) //in the first parsing iteration stack == NULL, need infinite loop and break condition
     {
-        if (stack->value = value)
+        if (stack->value == input_value)
+            return 1;
+        stack = stack->next;
+        if (stack == start)
+            break;
+    }
+   return 0; 
+}
+
+int needs_sorting(t_node *stack)
+{
+    t_node *start = stack;
+
+    if (stack->next == stack) //single value in list
+        return 0;
+    while (stack->next != start)
+    {
+        if (stack->value > stack->next->value)
             return 1;
         stack = stack->next;
     }
-   return 0; 
+    return 0;
 }

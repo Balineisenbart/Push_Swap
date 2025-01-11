@@ -15,7 +15,7 @@ void parse_input(int argc, char **argv, t_node **stack)
         numbers = ft_split(argv[i], ' ');
         while (numbers[j] != NULL)
         {
-            input_value = atoi(numbers[j]) //checl for overflow, also free stack if overflow happens
+            input_value = atoi(numbers[j]) //check for overflow, also free stack if overflow happens
             if (!(is_valid(numbers[j])) || has_duplicate(*stack, input_value))
             {
                 free_stack(stack);
@@ -47,9 +47,9 @@ void parse_input(int argc, char **argv, t_node **stack)
 
 void add_to_stack(t_node **head, int input_value)
 {
-    t_node *new_node = malloc sizeof(t_node);
+    t_node *new_node = malloc (sizeof(t_node));
     if (!new_node)
-        return NULL;
+        exit (EXIT_FAILURE);
 
     new_node->value = input_value;
 
