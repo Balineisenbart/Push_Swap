@@ -1,4 +1,4 @@
-//sa, sb, ss, ra, rb, rr, rra, rrb, rrr
+
 
 void    pa(t_node **head_a, t_node **head_b, t_node **tail_a, t_node **tail_b)
 {
@@ -38,7 +38,7 @@ void pb(t_node **head_a, t_node**tail_a, t_node **head_b, t_node **tail_b)
     t_node *temp;
 
     temp = *head_b;
-    if (*head_b == *tail_b)
+    if (*head_b == *tail_b) //rule can be implemented elsewhere
     {
         *head_b = NULL;
         *tail_b = NULL;
@@ -50,8 +50,7 @@ void pb(t_node **head_a, t_node**tail_a, t_node **head_b, t_node **tail_b)
     }
     if (*head_a == NULL)
     {
-        temp->next = temp;
-        temp->prev = temp;
+        temp->next = temp->prev = temp;
         *head_a = temp;
         *tail_a = temp;
     }
@@ -59,8 +58,8 @@ void pb(t_node **head_a, t_node**tail_a, t_node **head_b, t_node **tail_b)
     {
         temp->next = *head_a;
         temp->prev = *tail_a;
-        (*head_a)->prev = *tail_a;
-        (*tail_a)->next = *head_a;
+        (*head_a)->prev = *tail_a; //can be omitted
+        (*tail_a)->next = *head_a; //can be omitted
         *head_a = temp;
     }
     ft_printf("%s\n", pb);
