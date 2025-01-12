@@ -1,6 +1,6 @@
 
 
-void free_stack(stack)
+void free_stack(t_node **stack, t_node **tail)
 {
     t_node *current;
     t_node *temp;
@@ -18,4 +18,5 @@ void free_stack(stack)
         current = temp;
     }
     *head = NULL;
+    *tail = NULL;
 }

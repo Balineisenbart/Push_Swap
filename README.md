@@ -1,5 +1,7 @@
 # Push_Swap
 
+check if malloc fails, does it need to be freed?
+
 Step 1: Parse Input
 X ---- Convert input arguments into integers and store them in stack A. 
 X ---- Ensure error handling:
@@ -11,8 +13,8 @@ Step 2a: create operations
 write code for operations. pa, pb, sa, sb, ss, ra, rb, rr, rra, rrb, rrr
 
 Step 2b: check for order in stack a
-if already sorted just return
-if parts are already sorted leave them
+X ---- if already sorted just return
+if parts are already sorted use for optimized chunk sorting
 
 Step 2: Divide into Chunks
 Pre-sort the array to calculate chunk boundaries.
