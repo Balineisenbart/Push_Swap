@@ -1,14 +1,11 @@
-// pa, pb, sa, sb, ss, ra, rb, rr, rra, rrb, rrr
+//sa, sb, ss, ra, rb, rr, rra, rrb, rrr
 
-void    pa_b(t_node **head_a, t_node **head_b, t_node **tail_a, t_node **tail_b, char ptype) //does it fulfill doubly and circular linked list?, handled when last node is removed?, handled when input stack is empty?
+void    pa(t_node **head_a, t_node **head_b, t_node **tail_a, t_node **tail_b)
 {
     t_node *temp;
 
-    if (ptype == b)
-        
-
     temp = (*head_a);
-    if (*head_a == *tail_a) //this statement could be called elsewhere to save lines
+    if (*head_a == *tail_a)
     {
         *head_a = NULL;
         *tail_a == NULL;
@@ -33,4 +30,38 @@ void    pa_b(t_node **head_a, t_node **head_b, t_node **tail_a, t_node **tail_b,
         (*head_b)->prev = temp;
         (*head_b) = temp;
     }
+    ft_printf("%s\n", pa);
+}
+
+void pb(t_node **head_a, t_node**tail_a, t_node **head_b, t_node **tail_b)
+{
+    t_node *temp;
+
+    temp = *head_b;
+    if (*head_b == *tail_b)
+    {
+        *head_b = NULL;
+        *tail_b = NULL;
+    }
+    else
+    {
+        *head_b = (*head_b)->next;
+        (*tail_b)->next = *head_b;
+    }
+    if (*head_a == NULL)
+    {
+        temp->next = temp;
+        temp->prev = temp;
+        *head_a = temp;
+        *tail_a = temp;
+    }
+    else
+    {
+        temp->next = *head_a;
+        temp->prev = *tail_a;
+        (*head_a)->prev = *tail_a;
+        (*tail_a)->next = *head_a;
+        *head_a = temp;
+    }
+    ft_printf("%s\n", pb);
 }
