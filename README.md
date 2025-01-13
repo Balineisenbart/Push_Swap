@@ -10,7 +10,7 @@ X ---- Verify no duplicate values.
 Handle integer overflows. <<<<verify that ft_atoi handles this and frees stack if error occurs>>>>
 
 Step 2a: create operations
-write code for operations. pa, pb, sa, sb, ss, ra, rb, rr, rra, rrb, rrr
+write code for operations. ~~pa, pb,~~ sa, sb, ss, ra, rb, rr, rra, rrb, rrr
 
 Step 2b: check for order in stack a
 X ---- if already sorted just return
