@@ -1,5 +1,5 @@
 
-void sa(t_node **head_a, t_node **tail_a) //call only when !NULL && !(*head_a)->next = *head_a
+void sa(t_node **head_a, t_node **tail_a, char flag) //call only when !NULL && !(*head_a)->next = *head_a
 {
     t_node *temp;
 
@@ -21,9 +21,11 @@ void sa(t_node **head_a, t_node **tail_a) //call only when !NULL && !(*head_a)->
         *tail_a->next = *head_a;
         *head_a->prev = *tail_a;
     }
+    if (flag == 's')
+        ft_printf("%s\n", sa);
 }
 
-void sb(t_node **head_b, t_node **tail_b)
+void sb(t_node **head_b, t_node **tail_b, char flag)
 {
     t_node *temp;
 
@@ -44,10 +46,14 @@ void sb(t_node **head_b, t_node **tail_b)
         *tail_b->next = *head_b;
         *head_b->prev = *tail_b;
     }
+    if (flag == 's')
+        ft_printf("%s\n", sb);
 }
 
-void ss(t_node **head_a, t_node **tail_a, t_node **head_a, t_node **tail_b)
+void ss(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, char flag)
 {
-    sa(*head_a, *tail_a);
-    sb(*head_b, *tail_b);
+    sa(*head_a, *tail_a, flag);
+    sb(*head_b, *tail_b, flag);
+    if (flag == 'd')
+        ft_printf("%s\n", ss);
 }

@@ -1,6 +1,6 @@
 
 
-void    pa(t_node **head_a, t_node **head_b, t_node **tail_a, t_node **tail_b)
+void    pa(t_node **head_a, t_node **head_b, t_node **tail_a, t_node **tail_b, char flag)
 {
     t_node *temp;
 
@@ -30,10 +30,11 @@ void    pa(t_node **head_a, t_node **head_b, t_node **tail_a, t_node **tail_b)
         (*head_b)->prev = temp;
         (*head_b) = temp;
     }
-    ft_printf("%s\n", pa);
+    if (flag == 's')
+        ft_printf("%s\n", pa);
 }
 
-void pb(t_node **head_a, t_node**tail_a, t_node **head_b, t_node **tail_b)
+void pb(t_node **head_a, t_node**tail_a, t_node **head_b, t_node **tail_b, char flag)
 {
     t_node *temp;
 
@@ -62,5 +63,6 @@ void pb(t_node **head_a, t_node**tail_a, t_node **head_b, t_node **tail_b)
         (*tail_a)->next = *head_a; //can be omitted
         *head_a = temp;
     }
-    ft_printf("%s\n", pb);
+    if (flag == 's')
+        ft_printf("%s\n", pb);
 }
