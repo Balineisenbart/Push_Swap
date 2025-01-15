@@ -15,9 +15,14 @@ int main(int argc, char **argv)
 
 
         //sort 3        if (head_a/b != NULL)
-        sort_2_or_3_elements()
+        if (stack_length(head_a) <= 3)
+            sort_2_or_3_elements();
         //sort 5
+        else if (stack_length(head_a) == 4 || stack_length(head_a) == 5)
+            sort_4_or_5_elements();
         //sort more than 5
+        else if (stack_length(head_a) > 5)
+            complex_sorting();
 
     }
 
