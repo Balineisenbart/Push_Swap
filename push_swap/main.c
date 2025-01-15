@@ -15,6 +15,7 @@ int main(int argc, char **argv)
 
 
         //sort 3        if (head_a/b != NULL)
+        sort_2_or_3_elements()
         //sort 5
         //sort more than 5
 
