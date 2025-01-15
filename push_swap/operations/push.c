@@ -1,4 +1,5 @@
 
+#include "push_swap.h"
 
 void    pa(t_node **head_a, t_node **head_b, t_node **tail_a, t_node **tail_b, char flag)
 {
@@ -31,7 +32,7 @@ void    pa(t_node **head_a, t_node **head_b, t_node **tail_a, t_node **tail_b, c
         (*head_b) = temp;
     }
     if (flag == 's')
-        ft_printf("%s\n", pa);
+        printf("%s\n", pa);
 }
 
 void pb(t_node **head_a, t_node**tail_a, t_node **head_b, t_node **tail_b, char flag)
@@ -64,5 +65,5 @@ void pb(t_node **head_a, t_node**tail_a, t_node **head_b, t_node **tail_b, char 
         *head_a = temp;
     }
     if (flag == 's')
-        ft_printf("%s\n", pb);
+        printf("%s\n", pb);
 }

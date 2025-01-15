@@ -1,4 +1,6 @@
 
+#include "push_swap.h"
+
 void sa(t_node **head_a, t_node **tail_a, char flag) //call only when !NULL && !(*head_a)->next = *head_a
 {
     t_node *temp;
@@ -22,7 +24,7 @@ void sa(t_node **head_a, t_node **tail_a, char flag) //call only when !NULL && !
         *head_a->prev = *tail_a;
     }
     if (flag == 's')
-        ft_printf("%s\n", sa);
+        printf("%s\n", sa);
 }
 
 void sb(t_node **head_b, t_node **tail_b, char flag)
@@ -47,13 +49,13 @@ void sb(t_node **head_b, t_node **tail_b, char flag)
         *head_b->prev = *tail_b;
     }
     if (flag == 's')
-        ft_printf("%s\n", sb);
+        printf("%s\n", sb);
 }
 
 void ss(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, char flag)
 {
-    sa(*head_a, *tail_a, flag);
-    sb(*head_b, *tail_b, flag);
+    sa(*head_a, *tail_a, n);
+    sb(*head_b, *tail_b, n);
     if (flag == 'd')
-        ft_printf("%s\n", ss);
+        printf("%s\n", ss);
 }

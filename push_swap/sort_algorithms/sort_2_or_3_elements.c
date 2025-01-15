@@ -1,4 +1,6 @@
 
+#include "push_swap.h"
+
 void sort_2_or_3_elements(t_node **head, t_node **tail)
 {
     //if largest_value = stack_length: sa
@@ -22,5 +24,4 @@ void sort_2_or_3_elements(t_node **head, t_node **tail)
             sa(*head, *tail);
         }
     }
-
 }

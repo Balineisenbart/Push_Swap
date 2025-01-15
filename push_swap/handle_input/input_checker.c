@@ -1,10 +1,12 @@
 
+#include "push_swap.h"
+
 int is_valid(char *numbers)
 {
     int i;
 
     i = 0;
-    if (number[0] == '-' || number[0] == '+')
+    if (numbers[0] == '-' || numbers[0] == '+')
         i++;
     if (numbers[i] == '\0')
         return 0;

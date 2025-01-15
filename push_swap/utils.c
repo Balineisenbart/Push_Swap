@@ -1,6 +1,7 @@
 
+#include "push_swap.h"
 
-void free_stack(t_node **stack, t_node **tail)
+void free_stack(t_node **head, t_node **tail)
 {
     t_node *current;
     t_node *temp;
@@ -21,38 +22,76 @@ void free_stack(t_node **stack, t_node **tail)
     *tail = NULL;
 }
 
-int find_largest_elements_position(t_node **head, t_node **tail)
+void free_split_array(char **array)
 {
-    int index;
-    int largest_position;
-    t_node *largest_element = *head;
+    int i = 0;
+
+    if (!array)
+        return;
+
+    while (array[i])
+    {
+        free(array[i]); // Free each substring
+        i++;
+    }
+    free(array); // Free the array itself
+}
+
+int find_largest_elements_position(t_node *head)
+{
+    t_node *current = head;
+    t_node *largest_element = head;
+    int     index;
+    int     largest_position;
 
     index = 0;
     largest_position = 0;
-    while(largest_element != largest_element->next = *head)
+    while (current->next != head)
     {
-        if(largest_element->value < largest_element->next->value)
+        if (current->value > largest_element->value)
+        {
+            largest_element = current;
             largest_position = index;
-        largest_element = largest_element->next;
+        }
+        current = current->next;
         index++;
     }
+
+    if (current->value > largest_element->value)
+    {
+        largest_element = current;
+        largest_position = index;
+    }
+
     return largest_position;
 }
 
-int find_smallest_elements_position(t_node **head, t_node **tail)
+int find_smallest_elements_position(t_node *head)
 {
+    t_node *smallest_element = head;
+    t_node *current = head;
     int index;
     int smallest_position;
-    t_node *smallest_element = *head;
+
 
     index = 0;
-    smalest_position = 0;
-    while(smallest_element != smallest_element->next = *head)
+    smallest_position = 0;
+    while(current->next != head)
     {
-        if(smalles_element->value > smallest_element->next->value)
-            smallest_position = index;
-        smallest_element = smallest_element->next;
-        index++;
+       if(current->value < smallest_element->value)
+       {
+        smallest_element = current;
+        smallest_position = index;
+       }
+       current = current->next;
+       index++;
     }
+
+    if (current->value < smallest_element->value)
+    {
+        smallest_element = current;
+        smallest_position = index;
+    }
+
     return smallest_position;
 }

@@ -1,4 +1,5 @@
 
+#include "push_swap.h"
 
 void parse_input(int argc, char **argv, t_node **stack, t_node **tail)
 {
@@ -15,12 +16,13 @@ void parse_input(int argc, char **argv, t_node **stack, t_node **tail)
         numbers = ft_split(argv[i], ' ');
         while (numbers[j] != NULL)
         {
-            input_value = atoi(numbers[j]) //check for overflow, also free stack if overflow happens
-            if (!(is_valid(numbers[j])) || has_duplicate(*stack, input_value))
+            input_value = atoi(numbers[j]); //check for overflow, also free stack if overflow happens
+            if (!(is_valid(numbers[j])) || has_duplicates(*stack, input_value))
             {
                 free_stack(stack, tail);
                 free_split_array(numbers); //take from ft_split main
-                return (error\n);
+                printf("ERROR\n");
+                return ;
             }
             add_to_stack(stack, tail, input_value);
             j++;
@@ -31,11 +33,12 @@ void parse_input(int argc, char **argv, t_node **stack, t_node **tail)
     {
         while (i <= argc)
         {    
-            input_value = atoi(argv[i]) //check if my atoi has overflow handling
-            if(!(is_valid(argv[i], i)) || has_duplicate(*stack, input_value))
+            input_value = atoi(argv[i]); //check if my atoi has overflow handling
+            if(!(is_valid(argv[i], i)) || has_duplicates(*stack, input_value))
             {
                 free_stack(stack, tail);
-                return (error\n);
+                printf("ERROR\n");
+                return ;
             }
             if (argv[i] == ' ')
                 i++;

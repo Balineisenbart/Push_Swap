@@ -1,4 +1,6 @@
 
+#include "push_swap.h"
+
 int stack_length(t_node *head)
 {
     t_node *temp = head;
