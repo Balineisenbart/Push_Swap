@@ -10,18 +10,18 @@ void sort_2_or_3_elements(t_node **head, t_node **tail)
     // --else: rra & sa
     //after each operation print & check if needs sorting
 
-    if (find_largest_elements_position(head) == stack_length(head))
-        sa(head);
-    else if (find_largest_elements_position(head) == 0)
-        ra(*head, *tail);
+    if (find_largest_elements_position(*head) == stack_length(*head))
+        sa(head, tail, 's');
+    else if (find_largest_elements_position(*head) == 0)
+        ra(head, tail, 's');
     else
     {
-        if (find_smallest_element(head) == stack_length(head))
-            rra(*head, *tail)
+        if (find_smallest_elements_position(*head) == stack_length(*head))
+            rra(head, tail, 's');
         else
         {
-            rra(*head, *tail);
-            sa(*head, *tail);
+            rra(head, tail, 's');
+            sa(head, tail, 's');
         }
     }
 }

@@ -34,13 +34,13 @@ void parse_input(int argc, char **argv, t_node **stack, t_node **tail)
         while (i <= argc)
         {    
             input_value = atoi(argv[i]); //check if my atoi has overflow handling
-            if(!(is_valid(argv[i], i)) || has_duplicates(*stack, input_value))
+            if(!(is_valid(argv[i])) || has_duplicates(*stack, input_value))
             {
                 free_stack(stack, tail);
                 printf("ERROR\n");
                 return ;
             }
-            if (argv[i] == ' ')
+            if (*argv[i] == ' ')//will automatically call the next input w/o checking
                 i++;
             add_to_stack(stack, tail, input_value);
             i++;

@@ -1,5 +1,7 @@
 # Push_Swap
 
+!!! replace or rewrite ft_split & free_split_array(in utils.c) , replace printfw/ ft_printf!!!
+
 check if malloc fails, does it need to be freed?
 
 Step 1: Parse Input
@@ -10,7 +12,7 @@ X ---- Verify no duplicate values.
 Handle integer overflows. <<<<verify that ft_atoi handles this and frees stack if error occurs>>>>
 
 Step 2a: create operations
-write code for operations. ~~pa, pb,~~ sa, sb, ss, ra, rb, rr, rra, rrb, rrr
+X ---- write code for operations. ~~pa, pb, sa, sb, ss, ra, rb, rr, rra, rrb, rrr~~
 
 Step 2b: test output
 
@@ -40,3 +42,8 @@ Use pa to push it to stack A.
 Step 5: Repeat for All Chunks
 Process each chunk, push it to stack B, sort it, and push it back to stack A.
 Use dynamic chunk sizes if needed for optimization.
+
+
+#### helpful commands ####
+
+ctags --c-kinds=f -x *.c | sed -E 's/[0-9]+\s+.c\s+//g;s/$/;/g' > functions.h //extracts function prototypes

@@ -5,7 +5,7 @@ void sa(t_node **head_a, t_node **tail_a, char flag) //call only when !NULL && !
 {
     t_node *temp;
 
-    if ((*head_a)->next = *tail_a)
+    if ((*head_a)->next == *tail_a)
     {
         temp = *tail_a;
         *tail_a = *head_a;
@@ -20,18 +20,18 @@ void sa(t_node **head_a, t_node **tail_a, char flag) //call only when !NULL && !
         (*head_a)->next = temp; //connect new node1 to new node2
         temp->prev = *head_a; //connect back: new node2 to new node1
 
-        *tail_a->next = *head_a;
-        *head_a->prev = *tail_a;
+        (*tail_a)->next = *head_a;
+        (*head_a)->prev = *tail_a;
     }
     if (flag == 's')
-        printf("%s\n", sa);
+        printf("sa");
 }
 
 void sb(t_node **head_b, t_node **tail_b, char flag)
 {
     t_node *temp;
 
-   if ((*head_b)->next = *tail_b)
+   if ((*head_b)->next == *tail_b)
     {
         temp = *tail_b;
         *tail_b = *head_b;
@@ -45,17 +45,17 @@ void sb(t_node **head_b, t_node **tail_b, char flag)
         (*head_b)->next->prev = temp;
         (*head_b)->next = temp;
         temp->prev = *head_b;
-        *tail_b->next = *head_b;
-        *head_b->prev = *tail_b;
+        (*tail_b)->next = *head_b;
+        (*head_b)->prev = *tail_b;
     }
     if (flag == 's')
-        printf("%s\n", sb);
+        printf("sb");
 }
 
 void ss(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, char flag)
 {
-    sa(*head_a, *tail_a, n);
-    sb(*head_b, *tail_b, n);
+    sa(head_a, tail_a, 'n');
+    sb(head_b, tail_b, 'n');
     if (flag == 'd')
-        printf("%s\n", ss);
+        printf("ss");
 }
