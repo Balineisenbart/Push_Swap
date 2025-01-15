@@ -23,7 +23,7 @@ void sa(t_node **head_a, t_node **tail_a) //call only when !NULL && !(*head_a)->
     }
 }
 
-void sb(, t_node **head_b, t_node **tail_b)
+void sb(t_node **head_b, t_node **tail_b)
 {
     t_node *temp;
 
@@ -44,4 +44,10 @@ void sb(, t_node **head_b, t_node **tail_b)
         *tail_b->next = *head_b;
         *head_b->prev = *tail_b;
     }
+}
+
+void ss(t_node **head_a, t_node **tail_a, t_node **head_a, t_node **tail_b)
+{
+    sa(*head_a, *tail_a);
+    sb(*head_b, *tail_b);
 }
