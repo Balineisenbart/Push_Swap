@@ -65,8 +65,8 @@ void add_to_stack(t_node **head, t_node **tail, int input_value)
     }
     else
     {
-        new_node->prev = *head; //makes doubly
-        new_node->next = *tail;
+        new_node->prev = *tail; //makes doubly
+        new_node->next = *head;
         (*tail)->next = new_node; //makes circular
         (*head)->prev = new_node;
         *tail = new_node;

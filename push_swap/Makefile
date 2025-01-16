@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 //-fdebug-prefix-map=$(pwd)=. -fno-omit-frame-pointer
+CFLAGS = -Wall -Wextra -Werror -g3 -fdebug-prefix-map=$(pwd)=. -fno-omit-frame-pointer
 
 SRCDIR = .
 HANDLEDIR = $(SRCDIR)/handle_input
