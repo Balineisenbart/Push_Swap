@@ -14,7 +14,7 @@ void rra(t_node **head_a, t_node **tail_a, char flag)
         (*head_a)->prev = *tail_a;
     }
     if (flag == 's')
-        printf("rra");
+        printf("rra\n");
 }
 
 void rrb(t_node **head_b, t_node **tail_b, char flag)
@@ -30,7 +30,7 @@ void rrb(t_node **head_b, t_node **tail_b, char flag)
         (*head_b)->prev = *tail_b;
     }
     if (flag == 's')
-        printf("rrb");
+        printf("rrb\n");
 }
 
 void rrr(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, char flag)
@@ -38,5 +38,5 @@ void rrr(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, cha
     rra(head_a, tail_a, 'n');
     rrb(head_b, tail_b, 'n');
     if (flag == 'd')
-        printf("rrr");
+        printf("rrr\n");
 }

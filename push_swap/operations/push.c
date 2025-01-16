@@ -32,7 +32,7 @@ void    pa(t_node **head_a, t_node **head_b, t_node **tail_a, t_node **tail_b, c
         (*head_b) = temp;
     }
     if (flag == 's')
-        printf("pa");
+        printf("pa\n");
 }
 
 void pb(t_node **head_a, t_node**tail_a, t_node **head_b, t_node **tail_b, char flag)
@@ -65,5 +65,5 @@ void pb(t_node **head_a, t_node**tail_a, t_node **head_b, t_node **tail_b, char 
         *head_a = temp;
     }
     if (flag == 's')
-        printf("pb");
+        printf("pb\n");
 }

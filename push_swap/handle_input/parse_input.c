@@ -31,7 +31,7 @@ void parse_input(int argc, char **argv, t_node **stack, t_node **tail)
     }
     else if (argc > 2) // possible case where input arguments are hybrid of string and single numbers. can add separate chceker, then call argc == 2
     {
-        while (i <= argc)
+        while (i < argc)
         {    
             input_value = atoi(argv[i]); //check if my atoi has overflow handling
             if(!(is_valid(argv[i])) || has_duplicates(*stack, input_value))
@@ -65,10 +65,10 @@ void add_to_stack(t_node **head, t_node **tail, int input_value)
     }
     else
     {
-        new_node->prev = *tail; //makes doubly
-        new_node->next = *head;
+        new_node->prev = *head; //makes doubly
+        new_node->next = *tail;
         (*tail)->next = new_node; //makes circular
         (*head)->prev = new_node;
-        *head = new_node;
+        *tail = new_node;
     }
 }

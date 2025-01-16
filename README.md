@@ -15,6 +15,7 @@ Step 2a: create operations
 X ---- write code for operations. ~~pa, pb, sa, sb, ss, ra, rb, rr, rra, rrb, rrr~~
 
 Step 2b: test output
+---> can not handle >2 arguments
 
 Step 2c: check for order in stack a
 X ---- if already sorted just return

@@ -13,8 +13,6 @@ int main(int argc, char **argv)
         parse_input(argc, argv, &head_a, &tail_a);
         if (!needs_sorting(head_a))
             return 0;
-
-
         //sort 3        if (head_a/b != NULL)
         if (stack_length(head_a) <= 3)
             sort_2_or_3_elements(&head_a, &tail_a);
