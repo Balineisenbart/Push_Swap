@@ -2,8 +2,6 @@
 
 !!! replace or rewrite ft_split & free_split_array(in utils.c) , replace printfw/ ft_printf!!!
 
-check if malloc fails, does it need to be freed?
-
 Step 1: Parse Input
 X ---- Convert input arguments into integers and store them in stack A. 
 X ---- Ensure error handling:
@@ -15,7 +13,13 @@ Step 2a: create operations
 X ---- write code for operations. ~~pa, pb, sa, sb, ss, ra, rb, rr, rra, rrb, rrr~~
 
 Step 2b: test output
----> can not handle >2 arguments
+2&3:
+X ---- manual
+test using checker function
+4&5:
+test using checker function
+6+:
+test using checker function
 
 Step 2c: check for order in stack a
 X ---- if already sorted just return
@@ -44,7 +48,9 @@ Step 5: Repeat for All Chunks
 Process each chunk, push it to stack B, sort it, and push it back to stack A.
 Use dynamic chunk sizes if needed for optimization.
 
+Step 6: Funcheck passes?
 
 #### helpful commands ####
 
 ctags --c-kinds=f -x *.c | sed -E 's/[0-9]+\s+.c\s+//g;s/$/;/g' > functions.h //extracts function prototypes
+ARG="3 -232 231"; ./push_swap $ARG | ./checker_linux $ARG > checks output

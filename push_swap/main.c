@@ -7,7 +7,7 @@ int main(int argc, char **argv)
     {
         t_node *head_a = NULL;
         t_node *tail_a = NULL;
-//        t_node *head_b = NULL;
+//       t_node *head_b = NULL;
 //       t_node *tail_b = NULL;
 
         if (parse_input(argc, argv, &head_a, &tail_a))
