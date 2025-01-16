@@ -39,7 +39,7 @@ int needs_sorting(t_node *stack)
 {
     t_node *start = stack;
     
-    if (stack->next == stack) //single value in list
+    if (stack->next == stack) //single value in list or duplicate??
         return 0;
     while (stack->next != start)
     {

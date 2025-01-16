@@ -33,7 +33,7 @@ void add_to_stack(t_node **head, t_node **tail, int input_value);
 int has_duplicates(t_node *stack, int input_value);
 int is_valid(char *numbers);
 int needs_sorting(t_node *stack);
-void parse_input(int argc, char **argv, t_node **stack, t_node **tail);
+int parse_input(int argc, char **argv, t_node **stack, t_node **tail);
 int stack_length(t_node *head);
 
 

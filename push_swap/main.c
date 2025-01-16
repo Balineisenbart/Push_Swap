@@ -10,19 +10,20 @@ int main(int argc, char **argv)
 //        t_node *head_b = NULL;
 //       t_node *tail_b = NULL;
 
-        parse_input(argc, argv, &head_a, &tail_a);
-        if (!needs_sorting(head_a))
-            return 0;
-            
-        if (stack_length(head_a) <= 3)
-            sort_2_or_3_elements(&head_a, &tail_a);
-       /* //sort 5
-        else if (stack_length(head_a) == 4 || stack_length(head_a) == 5)
-            sort_4_or_5_elements();
-        //sort more than 5
-        else if (stack_length(head_a) > 5)
-            complex_sorting();*/
-
+        if (parse_input(argc, argv, &head_a, &tail_a))
+        {
+            if (!needs_sorting(head_a))
+                return 0;
+                
+            if (stack_length(head_a) <= 3)
+                sort_2_or_3_elements(&head_a, &tail_a);
+        /* //sort 5
+            else if (stack_length(head_a) == 4 || stack_length(head_a) == 5)
+                sort_4_or_5_elements();
+            //sort more than 5
+            else if (stack_length(head_a) > 5)
+                complex_sorting();*/
+        }
     }
 
     return 0;

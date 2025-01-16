@@ -1,7 +1,7 @@
 
 #include "push_swap.h"
 
-void parse_input(int argc, char **argv, t_node **stack, t_node **tail)
+int parse_input(int argc, char **argv, t_node **stack, t_node **tail)
 {
     int i;
     int j;
@@ -22,7 +22,7 @@ void parse_input(int argc, char **argv, t_node **stack, t_node **tail)
                 free_stack(stack, tail);
                 free_split_array(numbers); //take from ft_split main
                 printf("ERROR\n");
-                return ;
+                return 0;
             }
             add_to_stack(stack, tail, input_value);
             j++;
@@ -38,7 +38,7 @@ void parse_input(int argc, char **argv, t_node **stack, t_node **tail)
             {
                 free_stack(stack, tail);
                 printf("ERROR\n");
-                return ;
+                return 0;
             }
             if (*argv[i] == ' ')//will automatically call the next input w/o checking
                 i++;
@@ -46,6 +46,7 @@ void parse_input(int argc, char **argv, t_node **stack, t_node **tail)
             i++;
         }
     }
+    return 1;
 }
 
 void add_to_stack(t_node **head, t_node **tail, int input_value)
