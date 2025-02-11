@@ -51,3 +51,21 @@ int needs_sorting(t_node *stack)
     }
     return 0;
 }
+
+/*
+int is_partially_sorted(t_node *stack)
+{
+    t_node *current;
+    int sections;
+
+    current = *stack;
+    sections = 1;
+    while (current->next != stack)
+    {
+        if (current->value > current->next->value)
+            sections++;
+        current = current->next;
+    }
+    return sections;
+}
+*/

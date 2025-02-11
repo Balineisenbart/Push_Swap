@@ -40,13 +40,13 @@ void free_split_array(char **array)
 int find_largest_elements_position(t_node *head)
 {
     t_node *current = head;
-    t_node *largest_element = head;
+    t_node *largest_element = head->next;
     int     index;
     int     largest_position;
 
-    index = 0;
+    index = 1;
     largest_position = 0;
-    while (current->next != head)
+    while (current != head)
     {
         if (current->value > largest_element->value)
         {
@@ -56,27 +56,19 @@ int find_largest_elements_position(t_node *head)
         current = current->next;
         index++;
     }
-
-    if (current->value > largest_element->value)
-    {
-        largest_element = current;
-        largest_position = index;
-    }
-
     return largest_position;
 }
 
 int find_smallest_elements_position(t_node *head)
 {
     t_node *smallest_element = head;
-    t_node *current = head;
+    t_node *current = head->next;
     int index;
     int smallest_position;
 
-
-    index = 0;
+    index = 1;
     smallest_position = 0;
-    while(current->next != head)
+    while(current != head)
     {
        if(current->value < smallest_element->value)
        {
@@ -86,12 +78,33 @@ int find_smallest_elements_position(t_node *head)
        current = current->next;
        index++;
     }
-
-    if (current->value < smallest_element->value)
-    {
-        smallest_element = current;
-        smallest_position = index;
-    }
-
     return smallest_position;
+}
+
+void bubble_up_a(t_node **head_a, t_node **tail_a)
+{
+    int reverse_counter = 0;
+    int smallest_elements_position = find_smallest_elements_position(*head_a);
+    t_node *current = *head_a;
+
+    // Find smallest element's positiona
+    while (smallest_elements_position > 0)
+    {
+        current = current->next;
+        smallest_elements_position--;
+        reverse_counter++;
+    }
+    smallest_elements_position = reverse_counter;
+
+    // Choose shortest route (ra or rra)
+    if (smallest_elements_position > stack_length(*head_a) / 2)
+    {
+        while (reverse_counter--)
+            rra(head_a, tail_a, 's');
+    }
+    else
+    {
+        while (smallest_elements_position--)
+            ra(head_a, tail_a, 's');
+    }
 }

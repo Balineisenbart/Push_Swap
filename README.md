@@ -1,6 +1,6 @@
 # Push_Swap
 
-!!! replace or rewrite ft_split & free_split_array(in utils.c) , replace printfw/ ft_printf!!!
+!!! replace or rewrite ft_split & free_split_array(in utils.c) , replace printf w/ ft_printf!!!
 
 Step 1: Parse Input
 X ---- Convert input arguments into integers and store them in stack A. 
@@ -26,7 +26,7 @@ X ---- if already sorted just return
 if parts are already sorted use for optimized chunk sorting
 
 Step 2: Divide into Chunks
-Pre-sort the array to calculate chunk boundaries.
+Pre-sort the array to calculate chunk boundaries. - consider using index-transformation
 Example: For 100 numbers, divide into chunks of 10 numbers each.
 Store chunks in a helper array.
 
@@ -49,6 +49,7 @@ Process each chunk, push it to stack B, sort it, and push it back to stack A.
 Use dynamic chunk sizes if needed for optimization.
 
 Step 6: Funcheck passes?
+Step 7: Normcheck passes?
 
 #### helpful commands ####
 

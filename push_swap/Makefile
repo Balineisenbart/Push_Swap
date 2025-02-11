@@ -1,6 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 -fdebug-prefix-map=$(pwd)=. -fno-omit-frame-pointer
-
+CFLAGS = -Wall -Wextra -Werror -g
 SRCDIR = .
 HANDLEDIR = $(SRCDIR)/handle_input
 OPSDIR = $(SRCDIR)/operations
@@ -9,7 +8,7 @@ SORTDIR = $(SRCDIR)/sort_algorithms
 SRCS = 	$(SRCDIR)/main.c $(SRCDIR)/utils.c \
 		$(HANDLEDIR)/input_checker.c $(HANDLEDIR)/parse_input.c $(HANDLEDIR)/stack_length.c $(HANDLEDIR)/ft_split.c\
 		$(OPSDIR)/push.c $(OPSDIR)/reverse_rotate.c $(OPSDIR)/rotate.c $(OPSDIR)/swap.c \
-		$(SORTDIR)/sort_2_or_3_elements.c
+		$(SORTDIR)/sort_2_or_3_elements.c $(SORTDIR)/sort_4_or_5_elements.c
 
 OBJS = $(SRCS:.c=.o)
 

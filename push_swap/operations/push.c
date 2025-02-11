@@ -1,11 +1,11 @@
 
 #include "push_swap.h"
 
-void    pa(t_node **head_a, t_node **head_b, t_node **tail_a, t_node **tail_b, char flag)
+void    pb(t_node **head_a, t_node **head_b, t_node **tail_a, t_node **tail_b, char flag)
 {
     t_node *temp;
 
-    temp = (*head_a);
+    temp = *head_a;
     if (*head_a == *tail_a)
     {
         *head_a = NULL;
@@ -13,29 +13,30 @@ void    pa(t_node **head_a, t_node **head_b, t_node **tail_a, t_node **tail_b, c
     }
     else
     {
-        (*head_a) = (*head_a)->next;
-        (*tail_a)->next = (*head_a);
+        *head_a = (*head_a)->next;
+        (*tail_a)->next = *head_a;
+        (*head_a)->prev = *tail_a;
     }
-    if (head_b == NULL)
+    if (*head_b == NULL)
    {
-        (*head_b) = temp;
-        (*tail_b) = temp;
+        *head_b = temp;
+        *tail_b = temp;
         temp->next = temp;
         temp->prev = temp;
     }
     else
     {
-        temp->prev = (*tail_b);
-        temp->next = (*head_b);
+        temp->prev = *tail_b;
+        temp->next = *head_b;
         (*tail_b)->next = temp;
         (*head_b)->prev = temp;
-        (*head_b) = temp;
+        *head_b = temp;
     }
     if (flag == 's')
         printf("pa\n");
 }
 
-void pb(t_node **head_a, t_node**tail_a, t_node **head_b, t_node **tail_b, char flag)
+void pa(t_node **head_a, t_node**tail_a, t_node **head_b, t_node **tail_b, char flag)
 {
     t_node *temp;
 
