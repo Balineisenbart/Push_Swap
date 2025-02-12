@@ -40,13 +40,13 @@ void free_split_array(char **array)
 int find_largest_elements_position(t_node *head)
 {
     t_node *current = head;
-    t_node *largest_element = head->next;
+    t_node *largest_element = head;
     int     index;
     int     largest_position;
 
-    index = 1;
+    index = 0;
     largest_position = 0;
-    while (current != head)
+    while (current->next != head)
     {
         if (current->value > largest_element->value)
         {
@@ -56,19 +56,24 @@ int find_largest_elements_position(t_node *head)
         current = current->next;
         index++;
     }
+    if (current->value > largest_element->value)
+    {
+        largest_element = current;
+        largest_position= index;
+    }
     return largest_position;
 }
 
 int find_smallest_elements_position(t_node *head)
 {
     t_node *smallest_element = head;
-    t_node *current = head->next;
+    t_node *current = head;
     int index;
     int smallest_position;
 
-    index = 1;
+    index = 0;
     smallest_position = 0;
-    while(current != head)
+    while(current->next != head)
     {
        if(current->value < smallest_element->value)
        {
@@ -77,6 +82,11 @@ int find_smallest_elements_position(t_node *head)
        }
        current = current->next;
        index++;
+    }
+    if (current->value < smallest_element->value)
+    {
+        smallest_element = current;
+        smallest_position = index;
     }
     return smallest_position;
 }
