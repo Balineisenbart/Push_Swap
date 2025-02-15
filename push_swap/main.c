@@ -19,12 +19,8 @@ int main(int argc, char **argv)
                 sort_2_or_3_elements(&head_a, &tail_a);
             else if (stack_length(head_a) == 3 || stack_length(head_a) == 4)
                 sort_4_or_5_elements(&head_a, &tail_a, &head_b, &tail_b);
-            printf("end of sort_4_or_5_elements\n");
-                /*
-            //sort more than 5
-            else if (stack_length(head_a) > 5)
+            else if (stack_length(head_a) > 4)
                 complex_sorting();
-                */
         }
     }
 
