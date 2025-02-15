@@ -19,21 +19,20 @@ void    pb(t_node **head_a, t_node **head_b, t_node **tail_a, t_node **tail_b, c
     }
     if (*head_b == NULL)
    {
+        temp->next = temp->prev = temp;
         *head_b = temp;
         *tail_b = temp;
-        temp->next = temp;
-        temp->prev = temp;
     }
     else
     {
-        temp->prev = *tail_b;
         temp->next = *head_b;
+        temp->prev = *tail_b;
         (*tail_b)->next = temp;
         (*head_b)->prev = temp;
         *head_b = temp;
     }
     if (flag == 's')
-        printf("pa\n");
+        printf("pb\n");
 }
 
 void pa(t_node **head_a, t_node**tail_a, t_node **head_b, t_node **tail_b, char flag)
@@ -41,7 +40,7 @@ void pa(t_node **head_a, t_node**tail_a, t_node **head_b, t_node **tail_b, char 
     t_node *temp;
 
     temp = *head_b;
-    if (*head_b == *tail_b) //rule can be implemented elsewhere
+    if (*head_b == *tail_b)
     {
         *head_b = NULL;
         *tail_b = NULL;
@@ -50,6 +49,7 @@ void pa(t_node **head_a, t_node**tail_a, t_node **head_b, t_node **tail_b, char 
     {
         *head_b = (*head_b)->next;
         (*tail_b)->next = *head_b;
+        (*head_b)->prev = *tail_b;
     }
     if (*head_a == NULL)
     {
@@ -61,10 +61,10 @@ void pa(t_node **head_a, t_node**tail_a, t_node **head_b, t_node **tail_b, char 
     {
         temp->next = *head_a;
         temp->prev = *tail_a;
-        (*head_a)->prev = *tail_a; //can be omitted
-        (*tail_a)->next = *head_a; //can be omitted
+        (*tail_a)->next = temp;
+        (*head_a)->prev = temp;
         *head_a = temp;
     }
     if (flag == 's')
-        printf("pb\n");
+        printf("pa\n");
 }

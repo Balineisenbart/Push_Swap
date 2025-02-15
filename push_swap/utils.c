@@ -93,23 +93,14 @@ int find_smallest_elements_position(t_node *head)
 
 void bubble_up_a(t_node **head_a, t_node **tail_a)
 {
-    int reverse_counter = 0;
+    int stack_len = stack_length(*head_a);
     int smallest_elements_position = find_smallest_elements_position(*head_a);
-    t_node *current = *head_a;
-
-    // Find smallest element's positiona
-    while (smallest_elements_position > 0)
-    {
-        current = current->next;
-        smallest_elements_position--;
-        reverse_counter++;
-    }
-    smallest_elements_position = reverse_counter;
+    int reverse_moves = stack_len - smallest_elements_position + 1;
 
     // Choose shortest route (ra or rra)
-    if (smallest_elements_position > stack_length(*head_a) / 2)
+    if (smallest_elements_position > stack_len / 2)
     {
-        while (reverse_counter--)
+        while (reverse_moves--)
             rra(head_a, tail_a, 's');
     }
     else

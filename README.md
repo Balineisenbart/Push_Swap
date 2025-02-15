@@ -55,3 +55,6 @@ Step 7: Normcheck passes?
 
 ctags --c-kinds=f -x *.c | sed -E 's/[0-9]+\s+.c\s+//g;s/$/;/g' > functions.h //extracts function prototypes
 ARG="3 -232 231"; ./push_swap $ARG | ./checker_linux $ARG > checks output
+inside gdb:
+-> use backtrace(bt) :: to show the downstram function calls
+-> use watch _variable_ ; continue :: to follow a variable and print its content throughout the code
