@@ -52,20 +52,70 @@ int needs_sorting(t_node *stack)
     return 0;
 }
 
-/*
-int is_partially_sorted(t_node *stack)
+void find_lis(t_node *head, int size) // pass one variable e.g. j
 {
     t_node *current;
-    int sections;
+    t_node *compare;
+    int *lis;
+    int *prev;
+    int j;
+    int count;
 
-    current = *stack;
-    sections = 1;
-    while (current->next != stack)
+    j = -1;
+    count = 1;
+    lis = malloc (size * sizeof(int));
+    prev = malloc (size * sizeof(int));
+    current = head->next;
+    compare = head;
+
+    while (size > j++) //initialize backtrackers
     {
-        if (current->value > current->next->value)
-            sections++;
-        current = current->next;
+        lis[j] = 1;
+        prev[j] = -1;
     }
-    return sections;
+
+    j = 0;
+    while (size > count) //find all possible LIS
+    {
+        current = current->next;
+        while (count > j)
+        {
+            compare = compare->next;
+            if (compare->value < current->value && lis[j] + 1 > lis[count])
+            {
+                lis[count] = lis[j] + 1;
+                prev[count] = j;
+            }
+            j++;
+        }
+        count++;
+    }
+
+    count = 0;
+    current = head;
+    while (size > count++) //backtrack LIS and remove marker - after pushing
+    {
+        current = current->next;
+        current->is_lis = 0;
+    }
+
+    j = 0;
+    count = 0;
+    while (size > count++) //find LIS
+    {
+        if (lis[count] > lis[j])
+            j = count;
+    }
+    
+    while (j != -1) //mark LIS
+    {
+        current = head;
+        while (j > count++)
+            current = current->next;
+        current->is_lis = 1;
+        j = prev[j];
+    }
+
+    free(lis);
+    free(prev);
 }
-*/

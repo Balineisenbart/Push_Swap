@@ -10,6 +10,7 @@ typedef struct s_node {
     int value;
     struct s_node *next;
     struct s_node *prev;
+    int is_lis;
 } t_node;
 
 void free_split_array(char **array);
@@ -37,6 +38,7 @@ int is_valid(char *numbers);
 int needs_sorting(t_node *stack);
 int parse_input(int argc, char **argv, t_node **stack, t_node **tail);
 int stack_length(t_node *head);
+int *list_to_array(t_node *head, int size);
 
 
 #endif

@@ -73,3 +73,24 @@ void add_to_stack(t_node **head, t_node **tail, int input_value)
         *tail = new_node;
     }
 }
+/*
+int *list_to_array(t_node *head, int size)
+{
+    int *arr;
+    int i;
+    t_node *current;
+
+    i = 0;
+    current = head;
+    arr = malloc (size * sizeof(int));
+    if (!arr)
+        return NULL;
+
+    while (i != size)
+    {
+        arr[i] = current->value;
+        current = current->next;
+        i++;
+    }
+    return arr;
+}*/

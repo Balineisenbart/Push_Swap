@@ -24,30 +24,30 @@ test using checker function
 Step 2c: check for order in stack a
 X ---- if already sorted just return
 if parts are already sorted use for optimized chunk sorting
+--------------------------------------------------------------------
+1️⃣ Find LIS (or multiple LIS sequences) in Stack A
 
-Step 2: Divide into Chunks
-Pre-sort the array to calculate chunk boundaries. - consider using index-transformation
-Example: For 100 numbers, divide into chunks of 10 numbers each.
-Store chunks in a helper array.
+If LIS is large enough (~50% of input), use one LIS.
+If LIS is too small (~10-30%), split into multiple LIS sequences.
+Mark LIS elements in Stack A so they remain there.
+2️⃣ Push Non-LIS Elements to Stack B (pb)
 
-Step 3: Push Chunk Elements to Stack B
-Iterate through stack A and push elements belonging to the current chunk to stack B.
-Logic:
-Use pb to push the element from stack A to stack B.
-Rotate stack A to bring the next chunk element to the top.
+Push elements not in LIS to Stack B while balancing its structure.
+Avoid overloading Stack B to prevent excessive rb/rrb rotations later.
+3️⃣ Efficient Reinsertion of Stack B into Stack A (pa)
 
-Step 4: Greedy Sorting in Stack B
-Use the greedy approach to sort elements in stack B.
-Bring the largest element to the top and push it back to stack A.
-Logic:
-Find the largest element in stack B.
-Use rb or rrb to rotate it to the top.
-Use pa to push it to stack A.
+Compare head_b (top) and tail_b (bottom) to find the closest fit in Stack A.
+Push the closest element first to minimize rotations (pa or rrb + pa).
+Adjust Stack A’s order after each pa with sa, ra, or rra if needed.
+4️⃣ After Each Move (sa, ra, rrr, ss), Check Stack B
 
-Step 5: Repeat for All Chunks
-Process each chunk, push it to stack B, sort it, and push it back to stack A.
-Use dynamic chunk sizes if needed for optimization.
+If head_b fits into A, push it immediately (pa).
+If tail_b is closer, rrb then pa to avoid unnecessary rotations.
+Keep Stack B as small as possible by prioritizing insertions.
+5️⃣ Final Alignment of Stack A
 
+Rotate Stack A (ra or rra) until the smallest element is at the top.
+--------------------------------------------------------------------
 Step 6: Funcheck passes?
 Step 7: Normcheck passes?
 
