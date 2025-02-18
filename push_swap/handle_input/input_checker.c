@@ -64,7 +64,11 @@ void find_lis(t_node *head, int size, int pass) // pass one variable e.g. j
     j = -1;
     count = 1;
     lis = malloc (size * sizeof(int));
+    if (!lis)
+        return;
     prev = malloc (size * sizeof(int));
+    if (!prev)
+        return;
     current = head->next;
     compare = head;
 
@@ -122,5 +126,5 @@ void find_lis(t_node *head, int size, int pass) // pass one variable e.g. j
     free(prev);
 
     if (pass == 1)
-        find_lis(head, stack_length, 2);
+        find_lis(head, size, 2);
 }

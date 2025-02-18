@@ -1,15 +1,14 @@
 #include "push_swap.h"
 
-void complex_sorting(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
+void complex_sorting(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, int stack_len)
 {
-    int stack_len = stack_len(*head_a);
     int cheapest;
 
-    find_lis(*head, stack_len);
+    find_lis(*head_a, stack_len, 1);
     while (needs_sorting(*head_a))
     {
 
-        cheapest = find_cheapest_non_lis(*head, stack_len);
+        cheapest = find_cheapest_non_lis(*head_a, stack_len);
         if (cheapest > 0)
         {
             while (0 < cheapest--)

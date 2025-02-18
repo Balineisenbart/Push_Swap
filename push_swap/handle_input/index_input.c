@@ -5,13 +5,15 @@
 void index_input(t_node **head_a, int size)
 {
     t_node *current;
-    int arr;
+    int *arr;
     int i;
     int j;
     int temp;
 
-    arr = mallox (size * sizeof(int));
-    current = head_a;
+    arr = malloc (size * sizeof(int));
+    if (!arr)
+        return;
+    current = *head_a;
     i = 0;
 
     while (i != size) //values of list stored in arr
@@ -38,7 +40,7 @@ void index_input(t_node **head_a, int size)
         i++;
     }
 
-    current = head;
+    current = *head_a;
 
     i = 0;
     j = 0;
