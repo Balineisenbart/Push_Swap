@@ -42,20 +42,20 @@ void index_input(t_node **head_a, int size)
 
     current = *head_a;
 
-    i = 0;
     j = 0;
-    while (j < size)
+    while (j < size) //assign indexing to nodes
     {
+        i = 0;
         while (i < size)
         {
             if (current->value == arr[i])
             {
                 current->index = i;
-                j++;
                 break;
             }
             i++;
         }
+        j++;
         current = current->next;
     }
 }

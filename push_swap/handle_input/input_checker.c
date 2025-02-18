@@ -52,7 +52,7 @@ int needs_sorting(t_node *stack)
     return 0;
 }
 
-void find_lis(t_node *head, int size, int pass) // pass one variable e.g. j
+void find_lis(t_node *head, int size, int pass) //!NORM! pass one variable e.g. j
 {
     t_node *current;
     t_node *compare;
@@ -84,8 +84,11 @@ void find_lis(t_node *head, int size, int pass) // pass one variable e.g. j
         current = current->next;
         while (count > j)
         {
-            if (pass == 2 && compare->is_lis == 1)
+           /* if (pass == 2 && compare->is_lis == 1)
+            {
+                printf("%i 3 :: inside if pass\n", pass);
                 continue;
+            }*/
             compare = compare->next;
             if (compare->value < current->value && lis[j] + 1 > lis[count])
             {
@@ -125,6 +128,6 @@ void find_lis(t_node *head, int size, int pass) // pass one variable e.g. j
     free(lis);
     free(prev);
 
-    if (pass == 1)
-        find_lis(head, size, 2);
+    /*if (pass == 1)
+        find_lis(head, size, 2);*/
 }
