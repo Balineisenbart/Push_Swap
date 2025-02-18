@@ -52,7 +52,7 @@ int needs_sorting(t_node *stack)
     return 0;
 }
 
-void find_lis(t_node *head, int size) // pass one variable e.g. j
+void find_lis(t_node *head, int size, int pass) // pass one variable e.g. j
 {
     t_node *current;
     t_node *compare;
@@ -80,6 +80,8 @@ void find_lis(t_node *head, int size) // pass one variable e.g. j
         current = current->next;
         while (count > j)
         {
+            if (pass == 2 && compare->is_lis == 1)
+                continue;
             compare = compare->next;
             if (compare->value < current->value && lis[j] + 1 > lis[count])
             {
@@ -99,23 +101,26 @@ void find_lis(t_node *head, int size) // pass one variable e.g. j
         current->is_lis = 0;
     }
 
-    j = 0;
+    j = -1;
     count = 0;
-    while (size > count++) //find LIS
+    while (size > count++) //find LIS max length
     {
-        if (lis[count] > lis[j])
+        if (j == -1 || lis[count] > lis[j])
             j = count;
     }
     
-    while (j != -1) //mark LIS
+    while (j >= 0) //mark LIS
     {
         current = head;
         while (j > count++)
             current = current->next;
-        current->is_lis = 1;
+        current->is_lis = pass;
         j = prev[j];
     }
 
     free(lis);
     free(prev);
+
+    if (pass == 1)
+        find_lis(head, stack_length, 2);
 }

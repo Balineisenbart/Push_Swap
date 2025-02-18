@@ -11,6 +11,7 @@ typedef struct s_node {
     struct s_node *next;
     struct s_node *prev;
     int is_lis;
+    int index;
 } t_node;
 
 void free_split_array(char **array);
@@ -39,6 +40,9 @@ int needs_sorting(t_node *stack);
 int parse_input(int argc, char **argv, t_node **stack, t_node **tail);
 int stack_length(t_node *head);
 int *list_to_array(t_node *head, int size);
-
+int find_cheapest_non_lis(t_node **head, int stack_len);
+void index_input(t_node **head_a, int size);
+void optimize_stack_b(t_node **head_b, t_node **tail_b);
+void check_optimal_pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b);
 
 #endif
