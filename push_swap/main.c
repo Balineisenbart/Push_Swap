@@ -18,6 +18,10 @@ int main(int argc, char **argv)
             stack_len = stack_length(head_a);
             index_input(&head_a, stack_len);
 
+            
+            print_stack_a_and_stack_b(head_a, head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
             if (stack_len <= 2)
                 sort_2_or_3_elements(&head_a, &tail_a);
             else if (stack_len == 3 || stack_len == 4)
@@ -25,7 +29,8 @@ int main(int argc, char **argv)
             else if (stack_len > 4)
                 complex_sorting(&head_a, &tail_a, &head_b, &tail_b, stack_len);
         }
-    }
+       print_stack_a_and_stack_b(head_a, head_b);
 
+    }
     return 0;
 }

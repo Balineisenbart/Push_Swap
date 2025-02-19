@@ -12,5 +12,6 @@ int stack_length(t_node *head)
         i++;
         temp = temp->next;
     }
+    i++;
     return i;
 }

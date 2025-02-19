@@ -14,8 +14,8 @@ void    pb(t_node **head_a, t_node **head_b, t_node **tail_a, t_node **tail_b, c
     else
     {
         *head_a = (*head_a)->next;
-        (*tail_a)->next = *head_a;
         (*head_a)->prev = *tail_a;
+        (*tail_a)->next = *head_a;
     }
     if (*head_b == NULL)
    {

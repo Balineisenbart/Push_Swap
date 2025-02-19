@@ -52,82 +52,96 @@ int needs_sorting(t_node *stack)
     return 0;
 }
 
+
 void find_lis(t_node *head, int size, int pass) //!NORM! pass one variable e.g. j
 {
-    t_node *current;
-    t_node *compare;
+    t_node **arr;
     int *lis;
     int *prev;
+    int i;
     int j;
-    int count;
+    int max_len;
+    int max_index;
 
-    j = -1;
-    count = 1;
+    arr = make_array(head, size);
+    if (!arr)
+        return;
+    max_len = 1;
+    max_index = 0;
+
     lis = malloc (size * sizeof(int));
     if (!lis)
-        return;
+        return (free(arr));
     prev = malloc (size * sizeof(int));
     if (!prev)
-        return;
-    current = head->next;
-    compare = head;
-
-    while (size > j++) //initialize backtrackers
+        return (free(arr), free(lis));
+    i = 0;
+    while (i < size)
     {
-        lis[j] = 1;
-        prev[j] = -1;
+        lis[i] = 1;
+        prev[i] = -1;
+        i++;
     }
 
-    j = 0;
-    while (size > count) //find all possible LIS
+    i = 1;
+    while (i < size)
     {
-        current = current->next;
-        while (count > j)
+        j = 0;
+        while (j < i)
         {
-           /* if (pass == 2 && compare->is_lis == 1)
+            if (arr[j]->value < arr[i]->value && lis[j] + 1 > lis[i])
             {
-                printf("%i 3 :: inside if pass\n", pass);
-                continue;
-            }*/
-            compare = compare->next;
-            if (compare->value < current->value && lis[j] + 1 > lis[count])
-            {
-                lis[count] = lis[j] + 1;
-                prev[count] = j;
+                lis[i] = lis[j] + 1;
+                prev[i] = j;
             }
             j++;
         }
-        count++;
+        if (lis[i] > max_len)
+        {
+            max_len = lis[i];
+            max_index = i;
+        }
+        i++;
     }
 
-    count = 0;
-    current = head;
-    while (size > count++) //backtrack LIS and remove marker - after pushing
+    while (max_index != -1)
     {
-        current = current->next;
-        current->is_lis = 0;
+        arr[max_index]->is_lis = pass;
+        max_index = prev[max_index];
     }
 
-    j = -1;
-    count = 0;
-    while (size > count++) //find LIS max length
+    /*
+    printf(":: :: :: :: :: :: :: :: :: :: :: :: :: :: :: \n\n");
+
+    i = 0;
+    j = 0;
+    printf("lis array :: ");
+    while (j < size)
     {
-        if (j == -1 || lis[count] > lis[j])
-            j = count;
+        printf("[%d]", lis[j]);
+        j++;
     }
-    
-    while (j >= 0) //mark LIS
+    j = 0;
+    printf("\n");
+    printf("prev array :: ");
+    while (j < size)
     {
-        current = head;
-        while (j > count++)
-            current = current->next;
-        current->is_lis = pass;
-        j = prev[j];
+        printf("[%d]", prev[j]);
+        j++;
     }
+    printf("\n\n");
+    while (i < size)
+    {
+        printf("value %d :: %d and is_lis %d\n", i, arr[i]->value, arr[i]->is_lis);
+        i++;
+    }
+    printf("\n:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: \n\n");
+    */
 
     free(lis);
     free(prev);
-
-    /*if (pass == 1)
-        find_lis(head, size, 2);*/
+    free(arr);
 }
+
+
+

@@ -27,7 +27,7 @@ void rb(t_node **head_b, t_node **tail_b, char flag)
         *head_b = (*head_b)->next;
 
         (*tail_b)->next = *head_b;
-        (*head_b)->next = *tail_b;
+        (*head_b)->prev = *tail_b;
     }
     if (flag == 's')
       printf("rb\n");

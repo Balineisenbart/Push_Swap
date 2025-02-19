@@ -5,6 +5,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct s_node {
     int value;
@@ -45,6 +46,11 @@ void index_input(t_node **head_a, int size);
 void optimize_stack_b(t_node **head_b, t_node **tail_b);
 void check_optimal_pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b);
 void complex_sorting(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, int stack_len);
+bool all_lis(t_node *head_a);
+t_node **make_array(t_node *head, int size);
+
+void print_stack_a_and_stack_b(t_node *head_a, t_node *head_b);
+
 
 
 #endif

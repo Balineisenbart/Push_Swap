@@ -23,6 +23,7 @@ int find_cheapest_non_lis(t_node *head, int stack_len)
         bottom = bottom->prev;
         bottom_steps++;
     }
+    bottom_steps++;
 
     if (top_steps < bottom_steps)
         return top_steps;
@@ -40,9 +41,35 @@ void optimize_stack_b(t_node **head_b, t_node **tail_b)
 
 void check_optimal_pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
 {
+    if (!(*head_b || *tail_b))
+        return;
     if ((*head_a)->index == (*head_b)->index + 1 || (*tail_a)->index == (*head_b)->index - 1)
     {
         (*head_b)->is_lis = 3; //mark newly pushed element as part of lis to prevent pushing back;
         pa(head_a, head_b, tail_a, tail_b, 's');
     }
+   /* else if ((*head_a)->next->index == (*head_b)->index + 1) //experimentall added, room to improve rrr or ss
+    {
+        ra(head_a, tail_a, 's');
+        pa(head_a, head_b, tail_a, tail_b, 's');
+    }
+    else if ((*tail_a)->prev->index == (*head_b)->index - 1) //experimentall added, room to improve rrr or ss
+    {
+        rra(head_a, tail_a, 's');
+        pa(head_a, head_b, tail_a, tail_b, 's');
+    }        */
+}
+
+bool all_lis(t_node *head_a)
+{
+    t_node *current;
+
+    current = head_a;
+    while (current->next != head_a)
+    {
+        if (!current->is_lis)
+            return false;
+        current = current->next;
+    }
+    return current->is_lis;
 }
