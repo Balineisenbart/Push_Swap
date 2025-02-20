@@ -16,15 +16,14 @@ typedef struct s_node {
 } t_node;
 
 typedef enum e_move {
-    RX,   // forward rotation (ra or rb)
-    RRX   // reverse rotation (rra or rrb)
-}   t_move;
+    RX,
+    RRX
+} t_move;
 
 typedef struct s_cheapest {
-    int iterations; // number of rotations needed
-    t_move move;    // which rotation is optimal
-}   t_cheapest;
-
+    int iterations;
+    t_move move;
+} t_cheapest;
 
 void free_split_array(char **array);
 char **ft_split(const char *str, char delimiter);
@@ -61,8 +60,8 @@ bool all_lis(t_node *head_a);
 t_node **make_array(t_node *head, int size);
 
 void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b);
-t_cheapest find_cheapest_rotation(t_node *head_to_push, t_node *head_compare);
-char cheapest_path(t_node *head_a, t_node *head_b);
+t_cheapest find_cheapest_rotation(t_node *head_to_push, t_node *head_to_compare, t_node *tail_to_compare);
+char find_cheaper_stack(t_node *head_a, t_node *tail_a, t_node *head_b, t_node *tail_b);
 
 
 void print_stack_a_and_stack_b(t_node *head_a, t_node *head_b);
