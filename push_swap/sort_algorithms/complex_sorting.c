@@ -12,7 +12,7 @@ void complex_sorting(t_node **head_a, t_node **tail_a, t_node **head_b, t_node *
     if (*head_b)
         printf("Stack B head value:\n| %d, is_lis: %d\n| %d, is_lis: %d\n", (*head_b)->value, (*head_b)->is_lis, (*head_b)->next->value, (*head_b)->next->is_lis);
    
-    while (!all_lis(*head_a))
+    while ((!all_lis(*head_a)) || !(needs_sorting(*head_a)))
     {
         cheapest = find_cheapest_non_lis(*head_a, stack_len);
         if (cheapest > 0)
@@ -42,8 +42,12 @@ void complex_sorting(t_node **head_a, t_node **tail_a, t_node **head_b, t_node *
         }
         optimize_stack_b(head_b, tail_b);
     }
-    printf("after is lis:\n");
-    print_stack_a_and_stack_b(*head_a, *head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    finish(head_a, tail_a, head_b, tail_b);
+       //rotate through stack & stack b
+       //whenever index of head B fits between head a & tail a pa
+       //calculate costs for optimal rotations
+
 
     printf("end of complex sorting:\n");
         printf("Stack A head value: %d, is_lis: %d, index: %d\n", (*head_a)->value, (*head_a)->is_lis, (*head_a)->index);
@@ -51,9 +55,12 @@ void complex_sorting(t_node **head_a, t_node **tail_a, t_node **head_b, t_node *
         printf("Stack A value: %d, is_lis: %d\n", (*head_a)->next->next->value, (*head_a)->next->next->is_lis);
         printf("Stack A value: %d, is_lis: %d\n", (*head_a)->next->next->next->value, (*head_a)->next->next->next->is_lis);
         printf("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-        printf("Stack B head value: %d, is_lis: %d\n", (*head_b)->value, (*head_b)->is_lis);
-        printf("Stack B value: %d, is_lis: %d\n", (*head_b)->next->value, (*head_b)->next->is_lis);
-        printf("Stack B value: %d, is_lis: %d\n", (*head_b)->next->next->value, (*head_b)->next->next->is_lis);
-        printf("Stack B value: %d, is_lis: %d\n", (*head_b)->next->next->next->value, (*head_b)->next->next->next->is_lis);
+        if (*head_b)
+        {
+            printf("Stack B head value: %d, is_lis: %d\n", (*head_b)->value, (*head_b)->is_lis);
+            printf("Stack B value: %d, is_lis: %d\n", (*head_b)->next->value, (*head_b)->next->is_lis);
+            printf("Stack B value: %d, is_lis: %d\n", (*head_b)->next->next->value, (*head_b)->next->next->is_lis);
+            printf("Stack B value: %d, is_lis: %d\n", (*head_b)->next->next->next->value, (*head_b)->next->next->next->is_lis);
+        }
 
 }

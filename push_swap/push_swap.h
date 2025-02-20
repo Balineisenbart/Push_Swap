@@ -15,6 +15,17 @@ typedef struct s_node {
     int index;
 } t_node;
 
+typedef enum e_move {
+    RX,   // forward rotation (ra or rb)
+    RRX   // reverse rotation (rra or rrb)
+}   t_move;
+
+typedef struct s_cheapest {
+    int iterations; // number of rotations needed
+    t_move move;    // which rotation is optimal
+}   t_cheapest;
+
+
 void free_split_array(char **array);
 char **ft_split(const char *str, char delimiter);
 int find_largest_elements_position(t_node *head);
@@ -48,6 +59,11 @@ bool check_optimal_pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node 
 void complex_sorting(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, int stack_len);
 bool all_lis(t_node *head_a);
 t_node **make_array(t_node *head, int size);
+
+void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b);
+t_cheapest find_cheapest_rotation(t_node *head_to_push, t_node *head_compare);
+char cheapest_path(t_node *head_a, t_node *head_b);
+
 
 void print_stack_a_and_stack_b(t_node *head_a, t_node *head_b);
 
