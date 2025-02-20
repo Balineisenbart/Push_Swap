@@ -22,7 +22,7 @@ int find_smallest_elements_position(t_node *head);
 void free_stack(t_node **stack, t_node **tail);
 void sort_2_or_3_elements(t_node **head, t_node **tail);
 void sort_4_or_5_elements(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b);
-void pa(t_node **head_a, t_node **head_b, t_node **tail_a, t_node **tail_b, char flag);
+void pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, char flag);
 void pb(t_node **head_a, t_node**tail_a, t_node **head_b, t_node **tail_b, char flag);
 void ra(t_node **head_a, t_node **tail_a, char flag);
 void rb(t_node **head_b, t_node **tail_b, char flag);

@@ -48,16 +48,16 @@ bool check_optimal_pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node 
     else if ((*head_a)->index == (*head_b)->index + 1 || (*tail_a)->index == (*head_b)->index - 1)
     {
         (*head_b)->is_lis = 1; 
-        printf("Before pa:\n");
-        printf("Stack A head value: %d, is_lis: %d\n", (*head_a)->value, (*head_a)->is_lis);
-        printf("Stack B head value: %d, is_lis: %d\n", (*head_b)->value, (*head_b)->is_lis);
+        printf(">>>Before pa:\n");
+        printf("Stack A:\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n", (*head_a)->value, (*head_a)->is_lis, (*head_a)->next->value, (*head_a)->next->is_lis, (*head_a)->next->next->value, (*head_a)->next->next->is_lis, (*head_a)->next->next->next->value, (*head_a)->next->next->next->is_lis, (*head_a)->next->next->next->next->value, (*head_a)->next->next->next->next->is_lis);
+        printf("Stack B head value:\n| %d, is_lis: %d\n| %d, is_lis: %d\n", (*head_b)->value, (*head_b)->is_lis, (*head_b)->next->value, (*head_b)->next->is_lis);
 
-        pa(head_a, head_b, tail_a, tail_b, 's');
+        pa(head_a, tail_a, head_b, tail_b, 's');
 
-        printf("After pa:\n");
-        printf("Stack A head value: %d, is_lis: %d\n", (*head_a)->value, (*head_a)->is_lis);
+        printf(">>>After pa:\n");
+        printf("Stack A:\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n", (*head_a)->value, (*head_a)->is_lis, (*head_a)->next->value, (*head_a)->next->is_lis, (*head_a)->next->next->value, (*head_a)->next->next->is_lis, (*head_a)->next->next->next->value, (*head_a)->next->next->next->is_lis, (*head_a)->next->next->next->next->value, (*head_a)->next->next->next->next->is_lis);
         if (*head_b)
-            printf("Stack B head value: %d, is_lis: %d\n", (*head_b)->value, (*head_b)->is_lis);
+            printf("Stack B head value:\n| %d, is_lis: %d\n| %d, is_lis: %d\n", (*head_b)->value, (*head_b)->is_lis, (*head_b)->next->value, (*head_b)->next->is_lis);
         else
             printf("Stack B is empty\n");
 
