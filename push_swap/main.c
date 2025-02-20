@@ -16,20 +16,18 @@ int main(int argc, char **argv)
             if (!needs_sorting(head_a))
                 return 0;
             stack_len = stack_length(head_a);
-            index_input(&head_a, stack_len);
-
             
             print_stack_a_and_stack_b(head_a, head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
-            if (stack_len <= 2)
+            if (stack_len <= 3)
                 sort_2_or_3_elements(&head_a, &tail_a);
-            else if (stack_len == 3 || stack_len == 4)
+            else if (stack_len == 4 || stack_len == 5)
                 sort_4_or_5_elements(&head_a, &tail_a, &head_b, &tail_b);
-            else if (stack_len > 4)
+            else if (stack_len > 5)
                 complex_sorting(&head_a, &tail_a, &head_b, &tail_b, stack_len);
         }
-       print_stack_a_and_stack_b(head_a, head_b);
+       print_stack_a_and_stack_b(head_a, head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 
     }
     return 0;

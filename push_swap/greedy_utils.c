@@ -37,17 +37,34 @@ void optimize_stack_b(t_node **head_b, t_node **tail_b)
         rrb(head_b, tail_b, 's');
     else if ((*head_b)->value > (*head_b)->next->value)
         sb(head_b, tail_b, 's');
+    else
+        printf("nonthing to optimize in stack b\n");
 }
 
-void check_optimal_pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
+bool check_optimal_pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
 {
     if (!(*head_b || *tail_b))
-        return;
-    if ((*head_a)->index == (*head_b)->index + 1 || (*tail_a)->index == (*head_b)->index - 1)
+        return 0;
+    else if ((*head_a)->index == (*head_b)->index + 1 || (*tail_a)->index == (*head_b)->index - 1)
     {
-        (*head_b)->is_lis = 3; //mark newly pushed element as part of lis to prevent pushing back;
+        (*head_b)->is_lis = 1; 
+        printf("Before pa:\n");
+        printf("Stack A head value: %d, is_lis: %d\n", (*head_a)->value, (*head_a)->is_lis);
+        printf("Stack B head value: %d, is_lis: %d\n", (*head_b)->value, (*head_b)->is_lis);
+
         pa(head_a, head_b, tail_a, tail_b, 's');
+
+        printf("After pa:\n");
+        printf("Stack A head value: %d, is_lis: %d\n", (*head_a)->value, (*head_a)->is_lis);
+        if (*head_b)
+            printf("Stack B head value: %d, is_lis: %d\n", (*head_b)->value, (*head_b)->is_lis);
+        else
+            printf("Stack B is empty\n");
+
+        return 1;
     }
+    return 0;
+
    /* else if ((*head_a)->next->index == (*head_b)->index + 1) //experimentall added, room to improve rrr or ss
     {
         ra(head_a, tail_a, 's');

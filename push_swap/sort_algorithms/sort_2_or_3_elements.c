@@ -14,13 +14,13 @@ void sort_2_or_3_elements(t_node **head, t_node **tail)
     //  3   2   1   1   3   2
     while(needs_sorting(*head))
     {
-        if (find_largest_elements_position(*head) == stack_length(*head))
+        if (find_largest_elements_position(*head) == stack_length(*head) - 1)
             sa(head, tail, 's');
         else if (find_largest_elements_position(*head) == 0)
             ra(head, tail, 's');
         else
         {
-            if (find_smallest_elements_position(*head) == stack_length(*head))
+            if (find_smallest_elements_position(*head) == stack_length(*head) - 1)
                 rra(head, tail, 's');
             else
             {

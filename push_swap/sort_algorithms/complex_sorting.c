@@ -4,6 +4,7 @@ void complex_sorting(t_node **head_a, t_node **tail_a, t_node **head_b, t_node *
 {
     int cheapest;
 
+    index_input(head_a, stack_len);
     find_lis(*head_a, stack_len, 1);
     while (!all_lis(*head_a))
     {
@@ -14,19 +15,28 @@ void complex_sorting(t_node **head_a, t_node **tail_a, t_node **head_b, t_node *
             {
                 ra(head_a, tail_a, 's'); //possibly rr
                 check_optimal_pa(head_a, tail_a, head_b, tail_b);
+                printf("upper cheapest\n");
             }
         }
         else
         {
             while (0 > cheapest++)
             {
+                printf("value%d, is_lis%d\n", (*head_a)->value, (*head_a)->is_lis);
                 rra(head_a, tail_a, 's'); //possibly rrr
-                check_optimal_pa(head_a, tail_a, head_b, tail_b);
+                printf("value%d, is_lis%d\n", (*head_a)->value, (*head_a)->is_lis);
+                if (check_optimal_pa(head_a, tail_a, head_b, tail_b))
+                    break;
+                printf("lower cheapest\n");
             }
         }
-
-        pb(head_a, head_b, tail_a, tail_b, 's');
-
+        if (!(*head_a)->is_lis)
+        {
+            printf("value%d, is_lis%d\n", (*head_a)->value, (*head_a)->is_lis);
+            pb(head_a, head_b, tail_a, tail_b, 's');
+        }
         optimize_stack_b(head_b, tail_b);
     }
+    printf("after is lis:\n");
+    print_stack_a_and_stack_b(*head_a, *head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }

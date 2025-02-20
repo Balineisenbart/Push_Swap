@@ -95,8 +95,8 @@ void bubble_up_a(t_node **head_a, t_node **tail_a)
 {
     int stack_len = stack_length(*head_a);
     int smallest_elements_position = find_smallest_elements_position(*head_a);
-    int reverse_moves = stack_len - smallest_elements_position + 1;
-
+    int reverse_moves = stack_len - smallest_elements_position;
+    
     // Choose shortest route (ra or rra)
     if (smallest_elements_position > stack_len / 2)
     {
