@@ -36,14 +36,14 @@ void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
             {
                 while (cost.iterations-- > 0)
                 {
-                    rb(head_a, tail_a, 's');
+                    rb(head_b, tail_b, 's');
                 }
             }
             else
             {
                 while (cost.iterations-- > 0)
                 {
-                    rrb(head_a, tail_a, 's');
+                    rrb(head_b, tail_b, 's');
                 }
             }
         }

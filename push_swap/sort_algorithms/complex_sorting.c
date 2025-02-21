@@ -40,13 +40,14 @@ void complex_sorting(t_node **head_a, t_node **tail_a, t_node **head_b, t_node *
             printf("3) head a value: %d, is_lis%d\n", (*head_a)->value, (*head_a)->is_lis);
             pb(head_a, tail_a, head_b,  tail_b, 's');
         }
-        optimize_stack_b(head_b, tail_b);
+        if (*head_b)
+            optimize_stack_b(head_b, tail_b);
     }
+    if (!(all_lis(*head_a)))
+        finish(head_a, tail_a, head_b, tail_b);
+    if (needs_sorting(*head_a))
+        bubble_up_a(head_a, tail_a);
 
-    finish(head_a, tail_a, head_b, tail_b);
-       //rotate through stack & stack b
-       //whenever index of head B fits between head a & tail a pa
-       //calculate costs for optimal rotations
 
 
     printf("end of complex sorting:\n");
