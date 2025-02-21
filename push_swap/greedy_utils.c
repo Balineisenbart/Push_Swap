@@ -33,36 +33,39 @@ int find_cheapest_non_lis(t_node *head, int stack_len)
 
 void optimize_stack_b(t_node **head_b, t_node **tail_b)
 {
+    printf(" +++    INSIDE OPTIMIZE B      +++ \n");
     if ((*head_b)->value > (*tail_b)->value)
-        rrb(head_b, tail_b, 's');
+        rb(head_b, tail_b, 's');
     else if ((*head_b)->value > (*head_b)->next->value)
         sb(head_b, tail_b, 's');
     else
         printf("nonthing to optimize in stack b\n");
+    printf(" +++    EXIT OPTIMIZE B    +++ \n");
+
 }
 
 bool check_optimal_pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
 {
+    printf(" +++    INSIDE OPTIMAL    +++ \n");
+
     if (!(*head_b || *tail_b))
         return 0;
     else if ((*head_a)->index == (*head_b)->index + 1)
     {
         (*head_b)->is_lis = 1; 
         printf(">>>Before pa:\n");
-        printf("Stack A:\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n", (*head_a)->value, (*head_a)->is_lis, (*head_a)->next->value, (*head_a)->next->is_lis, (*head_a)->next->next->value, (*head_a)->next->next->is_lis, (*head_a)->next->next->next->value, (*head_a)->next->next->next->is_lis, (*head_a)->next->next->next->next->value, (*head_a)->next->next->next->next->is_lis, (*head_a)->next->next->next->next->next->value, (*head_a)->next->next->next->next->next->is_lis);
-        printf("Stack B head value:\n| %d, is_lis: %d\n| %d, is_lis: %d\n", (*head_b)->value, (*head_b)->is_lis, (*head_b)->next->value, (*head_b)->next->is_lis);
+        print_stack_a_and_stack_b(*head_a, *head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 
         pa(head_a, tail_a, head_b, tail_b, 's');
-
+        
         printf(">>>After pa:\n");
-        printf("Stack A:\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n", (*head_a)->value, (*head_a)->is_lis, (*head_a)->next->value, (*head_a)->next->is_lis, (*head_a)->next->next->value, (*head_a)->next->next->is_lis, (*head_a)->next->next->next->value, (*head_a)->next->next->next->is_lis, (*head_a)->next->next->next->next->value, (*head_a)->next->next->next->next->is_lis, (*head_a)->next->next->next->next->next->value, (*head_a)->next->next->next->next->next->is_lis);
-        if (*head_b)
-            printf("Stack B head value:\n| %d, is_lis: %d\n| %d, is_lis: %d\n", (*head_b)->value, (*head_b)->is_lis, (*head_b)->next->value, (*head_b)->next->is_lis);
-        else
-            printf("Stack B is empty\n");
+         print_stack_a_and_stack_b(*head_a, *head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+        
         return 1;
     }
+    printf(" +++    EXIT OPTIMAL    +++ \n");
 
     return 0;
 }

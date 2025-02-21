@@ -9,11 +9,15 @@ void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
 
     while (*head_b)
     {
+        printf(" +++    INSIDE FINISH    +++ \n");
+
         //find if it is cheaper to rotate stack a or stack b
         stack_to_rotate = find_cheaper_stack(*head_a, *tail_a, *head_b, *tail_b);
         if (stack_to_rotate == 'a')
         {
             cost = find_cheapest_rotation(*head_b, *head_a, *tail_a); //stack a is cheaper to rotate, compare to b
+            cost.iterations++;
+            printf("Stack A is cheaper\ncost.iterations %d\n", cost.iterations);
             if (cost.move == RX)
             {
                 while (cost.iterations-- > 0)
@@ -32,6 +36,7 @@ void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
         if (stack_to_rotate == 'b')
         {
             cost = find_cheapest_rotation(*head_a, *head_b, *tail_b); //stack b is cheaper to rotate, compare to a
+            printf("Stack B is cheaper\ncost.iterations %d\n", cost.iterations);
             if (cost.move == RX)
             {
                 while (cost.iterations-- > 0)
@@ -47,11 +52,12 @@ void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
                 }
             }
         }
-        printf("Stack A:\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n", (*head_a)->value, (*head_a)->is_lis, (*head_a)->next->value, (*head_a)->next->is_lis, (*head_a)->next->next->value, (*head_a)->next->next->is_lis, (*head_a)->next->next->next->value, (*head_a)->next->next->next->is_lis, (*head_a)->next->next->next->next->value, (*head_a)->next->next->next->next->is_lis, (*head_a)->next->next->next->next->next->value, (*head_a)->next->next->next->next->next->is_lis);
-        printf("Stack A:\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n| %d, is_lis: %d\n", (*head_b)->value, (*head_b)->is_lis, (*head_b)->next->value, (*head_b)->next->is_lis, (*head_b)->next->next->value, (*head_b)->next->next->is_lis, (*head_b)->next->next->next->value, (*head_b)->next->next->next->is_lis, (*head_b)->next->next->next->next->value, (*head_b)->next->next->next->next->is_lis, (*head_b)->next->next->next->next->next->value, (*head_b)->next->next->next->next->next->is_lis);
+        print_stack_a_and_stack_b(*head_a, *head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         pa(head_a, tail_a, head_b, tail_b, 's');
     }
+    printf(" +++    EXIT FINISH    +++ \n");
+
 }
 
 t_cheapest find_cheapest_rotation(t_node *head_to_push, t_node *head_to_compare, t_node *tail_to_compare)
@@ -63,17 +69,22 @@ t_cheapest find_cheapest_rotation(t_node *head_to_push, t_node *head_to_compare,
     int count_rx;
     int count_rrx;
 
+    count_rx = 0;
+    count_rrx = 0;
     candidate = head_to_push;
     current = head_to_compare;
     current_tail = tail_to_compare;
-    while (!(candidate->index == current->index - 1 && candidate->index == current_tail->index + 1) && count_rx < stack_length(head_to_compare))
+    while (!(candidate->index == current->index - 1 || candidate->index == current_tail->index + 1) && count_rx < stack_length(head_to_compare))
     {
+        printf("candidate: value: %d, index %d")
         current = current->next;
         count_rx++;
     }
-    while (!(candidate->index == current->index - 1 && candidate->index == current_tail->index + 1) && count_rrx < stack_length(head_to_compare))
+    current = head_to_compare;
+    current_tail = tail_to_compare;
+    while (!(candidate->index == current->index - 1 || candidate->index == current_tail->index + 1) && count_rrx < stack_length(head_to_compare))
     {
-        current = current->next;
+        current = current->prev;
         count_rrx++;
     }
 
@@ -96,8 +107,16 @@ char find_cheaper_stack(t_node *head_a, t_node *tail_a, t_node *head_b, t_node *
     t_cheapest cost_a;
     t_cheapest cost_b;
 
-    cost_a = find_cheapest_rotation(head_b, head_a, tail_a);
-    cost_b = find_cheapest_rotation(head_a, head_b, tail_b);
+    cost_a.iterations = INT_MAX;
+    cost_b.iterations = INT_MAX;
+
+    if (!(stack_length(head_a) == 1))
+        cost_a = find_cheapest_rotation(head_b, head_a, tail_a);
+    if (!(stack_length(head_b) == 1))
+        cost_b = find_cheapest_rotation(head_a, head_b, tail_b);
+
+    printf("cost_a.iterations %d\ncost_a.move %d\n", cost_a.iterations, cost_a.move);
+    printf("cost_b.iterations %d\ncost_b.move %d\n", cost_b.iterations, cost_b.move);
 
     if (cost_a.iterations < cost_b.iterations)
         return 'a';
