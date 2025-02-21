@@ -23,6 +23,7 @@ typedef enum e_move {
 
 typedef struct s_cheapest {
     int iterations;
+    int other_itr;
     t_move move;
 } t_cheapest;
 
@@ -61,7 +62,8 @@ bool all_lis(t_node *head_a);
 t_node **make_array(t_node *head, int size);
 
 void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b);
-t_cheapest find_cheapest_rotation(t_node *head_to_push, t_node *head_to_compare, t_node *tail_to_compare);
+t_cheapest find_cheapest_path_a(t_node *head_b, t_node *head_a);
+t_cheapest find_cheapest_path_b(t_node *head_a, t_node *head_b);
 char find_cheaper_stack(t_node *head_a, t_node *tail_a, t_node *head_b, t_node *tail_b);
 
 
