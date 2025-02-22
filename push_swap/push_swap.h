@@ -65,8 +65,8 @@ t_node **make_array(t_node *head, int size);
 void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b);
 t_cheapest *find_cheapest_path_a(t_node *head_b, t_node *head_a, t_node *tail_a);
 t_cheapest *find_cheapest_path_b(t_node *head_a, t_node *head_b, t_node *tail_b);
-t_cheapest find_cheapest_arr(t_cheapest *arr, int size);
-void price_calc(t_cheapest cost);
+t_cheapest find_cheapest_arr(t_cheapest *arr, t_node *head);
+t_cheapest price_calc(t_cheapest cost);
 char find_cheaper_stack(t_node *head_a, t_node *tail_a, t_node *head_b, t_node *tail_b);
 
 

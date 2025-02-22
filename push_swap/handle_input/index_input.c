@@ -58,4 +58,5 @@ void index_input(t_node **head_a, int size)
         j++;
         current = current->next;
     }
+    free(arr);
 }

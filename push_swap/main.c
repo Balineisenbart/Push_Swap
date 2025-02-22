@@ -25,9 +25,11 @@ int main(int argc, char **argv)
                 sort_4_or_5_elements(&head_a, &tail_a, &head_b, &tail_b);
             else if (stack_len > 5)
                 complex_sorting(&head_a, &tail_a, &head_b, &tail_b, stack_len);
-        }
-       print_stack_a_and_stack_b(head_a, head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        } 
+        print_stack_a_and_stack_b(head_a, head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+        free_stack(&head_a, &tail_a);
+        free_stack(&head_b, &tail_b);
 
     }
     return 0;
