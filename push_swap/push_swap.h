@@ -24,6 +24,7 @@ typedef enum e_move {
 typedef struct s_cheapest {
     int iterations;
     int other_r;
+    int price;
     t_move move;
 } t_cheapest;
 
@@ -65,6 +66,7 @@ void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b);
 t_cheapest *find_cheapest_path_a(t_node *head_b, t_node *head_a, t_node *tail_a);
 t_cheapest *find_cheapest_path_b(t_node *head_a, t_node *head_b, t_node *tail_b);
 t_cheapest find_cheapest_arr(t_cheapest *arr, int size);
+t_cheapest price_calc(t_cheapest cost);
 char find_cheaper_stack(t_node *head_a, t_node *tail_a, t_node *head_b, t_node *tail_b);
 
 

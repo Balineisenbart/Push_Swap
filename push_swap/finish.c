@@ -9,8 +9,8 @@ void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
     int size_a;
     int size_b;
 
-    size_a = stack_length(*head_b);
-    size_b = stack_length(*head_a);
+    size_a = stack_length(*head_a);
+    size_b = stack_length(*head_b);
 
     while (*head_b)
     {
@@ -20,13 +20,29 @@ void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
         stack_to_rotate = find_cheaper_stack(*head_a, *tail_a, *head_b, *tail_b);
         if (stack_to_rotate == 'a')
         {
-            cost = find_cheapest_arr(find_cheapest_path_a(*head_b, *head_a, *tail_a), size_a);
-            printf("Stack A is cheaper\ncost.iterations %d\n", cost.iterations);
-            if (cost.move == RX) //currently other stack only forward rotated. thus here always rr
+            cost = price_calc(find_cheapest_arr(find_cheapest_path_a(*head_b, *head_a, *tail_a), size_a));
+            printf("Stack A is cheaper\ncost.price %d\ncost.iterations %d\ncost.other_r %d\ncost.move %d\n", cost.price, cost.iterations, cost.other_r, cost.move);
+            if (cost.move == RX)
             {
-                while (cost.iterations-- > 0)
+                if (cost.iterations >= cost.other_r)
+                {    
+                    while (cost.other_r-- > 0)
+                    {
+                        rr(head_a, tail_a, head_b, tail_b, 'd');
+                        cost.iterations--;
+                    }
+                    while (cost.iterations-- > 0)
+                        ra(head_a, tail_a, 's');
+                }
+                if (cost.other_r > cost.iterations)
                 {
-                    rr(head_a, tail_a, head_b, tail_b, 'd');
+                    while (cost.iterations-- > 0)
+                    {
+                        rr(head_a, tail_a, head_b, tail_b, 'd');
+                        cost.other_r--;
+                    }
+                    while (cost.other_r-- > 0)
+                        rb(head_b, tail_b, 's');
                 }
             }
             else
@@ -35,19 +51,37 @@ void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
                 {
                     rra(head_a, tail_a, 's');
                 }
+                while (cost.other_r-- > 0)
+                    rb(head_b, tail_b, 's');
             }
         }
         else if (stack_to_rotate == 'b')
         {
-            cost = find_cheapest_arr(find_cheapest_path_a(*head_a, *head_b, *tail_b), size_b);
+            cost = price_calc(find_cheapest_arr(find_cheapest_path_b(*head_a, *head_b, *tail_b), size_b));
             printf("Stack B is cheaper\ncost.iterations %d\n", cost.iterations);
-            if (cost.iterations == 0)
+            if (cost.iterations == 0) // needed for discrepancy between source and destination stack???
                 ra(head_a, tail_a, 's');
             if (cost.move == RX)
             {
-                while (cost.iterations-- > 0)
+                if (cost.iterations >= cost.other_r)
+                {    
+                    while (cost.other_r-- > 0)
+                    {
+                        rr(head_a, tail_a, head_b, tail_b, 'd');
+                        cost.iterations--;
+                    }
+                   while (cost.iterations-- >0)
+                        rb(head_b, tail_b, 's');
+                }
+                if (cost.other_r > cost.iterations)
                 {
-                    rr(head_a, tail_a, head_b, tail_b, 'd');
+                    while (cost.iterations-- > 0)
+                    {
+                        rr(head_a, tail_a, head_b, tail_b, 'd');
+                        cost.other_r--;
+                    }
+                    while (cost.other_r-- > 0)
+                        ra(head_a, tail_a, 's');
                 }
             }
             else
@@ -56,6 +90,8 @@ void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
                 {
                     rrb(head_b, tail_b, 's');
                 }
+                while (cost.other_r-- > 0)
+                    ra(head_a, tail_a, 's');
             }
         }
         print_stack_a_and_stack_b(*head_a, *head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -112,19 +148,19 @@ t_cheapest *find_cheapest_path_a(t_node *head_b, t_node *head_a, t_node *tail_a)
         if (count_rx <= count_rrx)
         {
             rotation.move = RX;
-            rotation.iterations = count_rx - i; //deduct here i from count ->need to implement rr
+            rotation.iterations = count_rx; //deduct here i from count ->need to implement rr
             rotation.other_r = i;
             arr[i] = rotation;
         }
         else
         {
-            rotation.move = RX; //when i == count ->only rr; when count > i, need additional ra, when i > count, need additional rb
-            rotation.iterations = count_rx + i;
+            rotation.move = RRX;
+            rotation.iterations = count_rrx;
             rotation.other_r = i;
             arr[i] = rotation;
         } 
         i++;
-        candidate = head_b->next; //equals one rb ?? do the same with rrb head_b->prev (x)
+        candidate = candidate->next; //do the same with rrb head_b->prev (x)
     }
     return arr;
 }
@@ -171,19 +207,20 @@ t_cheapest *find_cheapest_path_b(t_node *head_a, t_node *head_b, t_node *tail_b)
 
         if (count_rx <= count_rrx)
         {
-            rotation.move = RX; //when i == count ->only rr; when count > i, need additional ra, when i > count, need additional rb
-            rotation.iterations = count_rx - i;
+            rotation.move = RX; 
+            rotation.iterations = count_rx;
             rotation.other_r = i;
             arr[i] = rotation;
         }
         else
         {
             rotation.move = RRX;
-            rotation.iterations = count_rrx + i; //deduct here i from count if other stack was backwards rotated. see next comment (x)
+            rotation.iterations = count_rrx; 
+            rotation.other_r = i;
             arr[i] = rotation;
         } 
         i++;
-        candidate = head_b->next; //equals one rb ?? do the same with rrb head_b->prev (x)
+        candidate = candidate->next; //do the same with rrb head_b->prev (x)
     }
     return arr;
 }
@@ -196,25 +233,50 @@ char find_cheaper_stack(t_node *head_a, t_node *tail_a, t_node *head_b, t_node *
     int size_a;
     int size_b;
 
-    cost_a.iterations = INT_MAX;
-    cost_b.iterations = INT_MAX;
+    printf(" +++    INSIDE CHEAPER STACK   +++ \n");
+
+    cost_a.price = INT_MAX;
+    cost_b.price = INT_MAX;
     size_a = stack_length(head_a);
     size_b = stack_length(head_b);
 
 
     if (!(stack_length(head_a) == 1))
-        cost_a = find_cheapest_arr(find_cheapest_path_a(head_b, head_a, tail_a), size_a);
+        cost_a = price_calc(find_cheapest_arr(find_cheapest_path_a(head_b, head_a, tail_a), size_a));
     if (!(stack_length(head_b) == 1))
-        cost_b = find_cheapest_arr(find_cheapest_path_b(head_a, head_b, tail_b), size_b);
+        cost_b = price_calc(find_cheapest_arr(find_cheapest_path_b(head_a, head_b, tail_b), size_b));
 
-    printf("cost_a.iterations %d\ncost_a.move %d\n", cost_a.iterations, cost_a.move);
-    printf("cost_b.iterations %d\ncost_b.move %d\n", cost_b.iterations, cost_b.move);
+    printf("lowest.price %d\ncost_a.iterations %d\ncost_a.other_r %d\n", cost_a.price, cost_a.iterations, cost_a.other_r);
+    printf("lowest.price %d\ncost_a.iterations %d\ncost_a.other_r %d\n", cost_b.price, cost_b.iterations, cost_b.other_r);
 
-    if (cost_a.iterations < cost_b.iterations)
+    printf(" +++    EXIT CHEAPER STACK   +++ \n");
+
+
+
+    if (cost_a.price < cost_b.price)
         return 'a';
     else
         return 'b';
 }
+
+t_cheapest price_calc(t_cheapest cost)
+{
+    t_cheapest stack;
+
+    printf(" +++    INSIDE BEST PRICE   +++ \n");
+
+    stack = cost;
+    if (cost.iterations >= cost.other_r) //iterations is price, other_r are number of possible rr
+        stack.price = cost.iterations;
+    else if (cost.iterations < cost.other_r) //other_r is price, iterations are number of possible rr
+        stack.price = cost.other_r;
+
+    printf("lowest.price %d\nstack.iterations %d\nstack.other_r %d\n", stack.price, stack.iterations, stack.other_r);
+
+    printf(" +++    EXIT BEST PRICE   +++ \n");
+
+    return stack;
+}   
 
 t_cheapest find_cheapest_arr(t_cheapest *arr, int size)
 {
