@@ -24,7 +24,7 @@ void print_stack_a_and_stack_b(t_node *head_a, t_node *head_b)
     int max_height = (total_a > total_b) ? total_a : total_b;
 
     printf("\n   ___     ___  \n");
-    printf("    A       B  \n\n");
+    printf("      A       B  \n\n");
 
     for (int i = 0; i < max_height; i++)
     {
