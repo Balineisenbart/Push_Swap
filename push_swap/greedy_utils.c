@@ -33,6 +33,8 @@ int find_cheapest_non_lis(t_node *head, int stack_len)
 
 void optimize_stack_b(t_node **head_b, t_node **tail_b)
 {
+    if (stack_length(*head_b) == 1)
+        return ;
     printf(" +++    INSIDE OPTIMIZE B      +++ \n");
     if ((*head_b)->value > (*tail_b)->value)
         rb(head_b, tail_b, 's');

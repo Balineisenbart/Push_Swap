@@ -12,7 +12,7 @@ void complex_sorting(t_node **head_a, t_node **tail_a, t_node **head_b, t_node *
     print_stack_a_and_stack_b(*head_a, *head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     
 
-    while ((!all_lis(*head_a)) || (needs_sorting(*head_a)))
+    while (!all_lis(*head_a)) //|| (needs_sorting(*head_a)))
     {
         printf("inside while loop\n");
         print_stack_a_and_stack_b(*head_a, *head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

@@ -7,6 +7,9 @@ void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
     t_cheapest cost;
     char stack_to_rotate;
 
+    if (!(*head_a) || !(h*head_b))
+        return;
+
     while (*head_b)
     {
         printf(" +++    INSIDE FINISH    +++ \n");
