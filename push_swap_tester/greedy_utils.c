@@ -35,26 +35,39 @@ void optimize_stack_b(t_node **head_b, t_node **tail_b)
 {
     if (stack_length(*head_b) == 1)
         return ;
+    printf(" +++    INSIDE OPTIMIZE B      +++ \n");
     if ((*head_b)->value > (*tail_b)->value)
         rb(head_b, tail_b, 's');
     else if ((*head_b)->value > (*head_b)->next->value)
         sb(head_b, tail_b, 's');
+    else
+        printf("nonthing to optimize in stack b\n");
+    printf(" +++    EXIT OPTIMIZE B    +++ \n");
 
 }
 
 bool check_optimal_pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
 {
+    printf(" +++    INSIDE OPTIMAL    +++ \n");
+
     if (!(*head_b || *tail_b))
         return 0;
     else if ((*head_a)->index == (*head_b)->index + 1)
     {
         (*head_b)->is_lis = 1; 
+        printf(">>>Before pa:\n");
+        print_stack_a_and_stack_b(*head_a, *head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 
         pa(head_a, tail_a, head_b, tail_b, 's');
         
+        printf(">>>After pa:\n");
+         print_stack_a_and_stack_b(*head_a, *head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         
         return 1;
     }
+    printf(" +++    EXIT OPTIMAL    +++ \n");
 
     return 0;
 }

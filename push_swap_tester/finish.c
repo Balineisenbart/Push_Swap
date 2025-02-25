@@ -14,12 +14,15 @@ void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
 
     while (*head_b)
     {
- 
+        printf(" +++    INSIDE FINISH    +++ \n");
+        print_stack_a_and_stack_b(*head_a, *head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 
         //find if it is cheaper to rotate stack a or stack b
         stack_to_rotate = find_cheaper_stack(head_a, tail_a, head_b);
         if (stack_to_rotate == 'a')
         {
+            printf("Stack A is cheaper\ncost.iterations %d\ncost.other_r %d\ncost.price %d\n", cost.iterations ,cost.other_r, cost.price);
             cost = find_cheapest_arr(find_cheapest_path_a(head_b, head_a, tail_a), head_b);
             if (cost.move == RX)
             {
@@ -54,6 +57,7 @@ void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
         }
         else if (stack_to_rotate == 'b')
         {
+            printf("Stack B is cheaper\ncost.iterations %d\ncost.other_r %d\ncost.price %d\n", cost.iterations ,cost.other_r, cost.price);
             cost = find_cheapest_arr(find_cheapest_path_b(head_a, tail_a, head_b), head_a);
             if (cost.move == RX)
             {
@@ -88,11 +92,14 @@ void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
                     ra(head_a, tail_a, 's');
             }
         }
+        print_stack_a_and_stack_b(*head_a, *head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         pa(head_a, tail_a, head_b, tail_b, 's');
 
+        print_stack_a_and_stack_b(*head_a, *head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     }
+    printf(" +++    EXIT FINISH    +++ \n");
 
 }
 
@@ -108,6 +115,11 @@ t_cheapest *find_cheapest_path_a(t_node **head_b, t_node **head_a, t_node **tail
     int n;
     int i;
 
+    printf(" +++ INSIDE CHEAPEST A +++\n");
+    print_stack_a_and_stack_b(*head_a, *head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
     candidate = *head_b;
     n = stack_length(*head_b);
     i = 0;
@@ -120,6 +132,7 @@ t_cheapest *find_cheapest_path_a(t_node **head_b, t_node **head_a, t_node **tail
         count_rrx = 0;
         current = *head_a;
         current_tail = *tail_a;
+        printf("Checking forward: Candidate  %d, Current %d, Current_Tail %d\n", candidate->value, current->value, current_tail->value);
         while (!(candidate->index == current->index - 1 || candidate->index == current_tail->index + stack_length(*head_a) + 1) && count_rx < stack_length(*head_a))
         {
             
@@ -137,6 +150,7 @@ t_cheapest *find_cheapest_path_a(t_node **head_b, t_node **head_a, t_node **tail
         }
         current = *head_a;
         current_tail = *tail_a;
+        printf("Checking reverse: Candidate  %d, Current %d, Current_Tail %d\n", candidate->value, current->value, current_tail->value);
         while (!(candidate->index == current->index - 1 || candidate->index == current_tail->index + stack_length(*head_a) + 1) && count_rrx < stack_length(*head_a))
         {
             current = current_tail;
@@ -153,6 +167,7 @@ t_cheapest *find_cheapest_path_a(t_node **head_b, t_node **head_a, t_node **tail
 
         if (count_rx <= count_rrx)
         {
+            printf(">>> RA cheaper <<<\n");
             rotation.move = RX;
             rotation.iterations = count_rx; 
             rotation.other_r = i;
@@ -161,6 +176,7 @@ t_cheapest *find_cheapest_path_a(t_node **head_b, t_node **head_a, t_node **tail
         }
         else
         {
+            printf(">>> RRA cheaper <<<\n");
             rotation.move = RRX;
             rotation.iterations = count_rrx;
             rotation.other_r = i;
@@ -170,6 +186,9 @@ t_cheapest *find_cheapest_path_a(t_node **head_b, t_node **head_a, t_node **tail
         i++;
         candidate = candidate->next; //do the same with rrb head_b->prev (x)
     }
+
+    printf(" +++ EXIT CHEAPEST A +++\n");
+    print_stack_a_and_stack_b(*head_a, *head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     return arr;
 }
@@ -186,9 +205,12 @@ t_cheapest *find_cheapest_path_b(t_node **head_a, t_node **tail_a, t_node **head
     int n;
     int i;
 
+    printf(" +++ INSIDE FIND CHEAPEST B +++\n");
+    print_stack_a_and_stack_b(*head_a, *head_b);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     current = *head_a;
     current_tail = *tail_a;
+    printf("current_head %d\ncurrent_tail %d\n", current->value, current_tail->value);
 
     n = stack_length(*head_a);
     i = 0;
@@ -200,6 +222,7 @@ t_cheapest *find_cheapest_path_b(t_node **head_a, t_node **tail_a, t_node **head
         count_rx = 0;
         count_rrx = 0;
         candidate = *head_b;
+        printf("Checking forward: Candidate %d, Current %d, Current_Tail %d\n", candidate->value, current->value, current_tail->value);
         while (!(candidate->index == current->index - 1 || candidate->index == current_tail->index + stack_length(*head_a) + 1) && count_rx < stack_length(*head_b))
         {
             candidate = candidate->next;
@@ -213,6 +236,7 @@ t_cheapest *find_cheapest_path_b(t_node **head_a, t_node **tail_a, t_node **head
 
         }
         candidate = *head_b;
+        printf("Checking reverse: Candidate %d, Current %d, Current_Tail %d\n", candidate->value, current->value, current_tail->value);
         while (!(candidate->index == current->index - 1 || candidate->index == current_tail->index + stack_length(*head_a) + 1) && count_rrx < stack_length(*head_b))
         {
             candidate = candidate->prev;
@@ -229,6 +253,7 @@ t_cheapest *find_cheapest_path_b(t_node **head_a, t_node **tail_a, t_node **head
 
         if (count_rx <= count_rrx)
         {
+            printf(">>> RB cheaper <<<\n");
             /*printf("count_rb %d, count_rrb %d\n", count_rx, count_rrx);
             printf("current_head %d\ncurrent_tail %d\ncandidate(head of B) %d\n", current->value, current_tail->value, candidate->value);*/
 
@@ -240,6 +265,7 @@ t_cheapest *find_cheapest_path_b(t_node **head_a, t_node **tail_a, t_node **head
         }
         else
         {
+            printf(">>> RRB cheaper <<<\n");
             /*printf("count_rb %d, count_rrb %d\n", count_rx, count_rrx);
             printf("current_head %d\ncurrent_tail %d\ncandidate(head of B) %d\n", current->value, current_tail->value, candidate->value);*/
 
@@ -253,6 +279,7 @@ t_cheapest *find_cheapest_path_b(t_node **head_a, t_node **tail_a, t_node **head
         current_tail = current;
         current = current->next; //do the same with rrb head_b->prev (x)
     }
+    printf(" +++ EXIT CHEAPEST B +++\n");
     return arr;
 }
 
@@ -296,6 +323,7 @@ t_cheapest find_cheapest_arr(t_cheapest *arr, t_node **head) //????what if arr i
 
     while (i < size)
     {
+        printf("arr[%d]\nsize: %d\n", i, size);
         arr[i] = price_calc(arr[i]);
         i++;
     }
@@ -311,6 +339,7 @@ t_cheapest find_cheapest_arr(t_cheapest *arr, t_node **head) //????what if arr i
     }
     free(arr);
 
+    printf("smallest price: %d\n", smallest.price);
     return smallest;
 }
 

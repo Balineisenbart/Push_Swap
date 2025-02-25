@@ -69,6 +69,7 @@ t_cheapest *find_cheapest_path_b(t_node **head_a, t_node **tail_a, t_node **head
 t_cheapest find_cheapest_arr(t_cheapest *arr, t_node **head);
 t_cheapest price_calc(t_cheapest cost);
 
+
 void print_stack_a_and_stack_b(t_node *head_a, t_node *head_b);
 
 

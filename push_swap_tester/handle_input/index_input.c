@@ -51,7 +51,7 @@ void index_input(t_node **head_a, int size)
             if (current->value == arr[i])
             {
                 current->index = i;
-                //printf("index %d - value %d\n", i, current->value);
+                printf("index %d - value %d\n", i, current->value);
 
                 break;
             }
