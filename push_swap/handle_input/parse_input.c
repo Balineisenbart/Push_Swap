@@ -21,7 +21,7 @@ int parse_input(int argc, char **argv, t_node **stack, t_node **tail)
             {
                 free_stack(stack, tail);
                 free_split_array(numbers); //take from ft_split main
-                printf("ERROR\n");
+                printf("Error\n");
                 return 0;
             }
             add_to_stack(stack, tail, input_value);
@@ -37,7 +37,7 @@ int parse_input(int argc, char **argv, t_node **stack, t_node **tail)
             if(!(is_valid(argv[i])) || has_duplicates(*stack, input_value))
             {
                 free_stack(stack, tail);
-                printf("ERROR\n");
+                printf("Error\n");
                 return 0;
             }
             if (*argv[i] == ' ')//will automatically call the next input w/o checking

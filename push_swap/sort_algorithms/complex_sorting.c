@@ -36,8 +36,8 @@ void complex_sorting(t_node **head_a, t_node **tail_a, t_node **head_b, t_node *
         {
             pb(head_a, tail_a, head_b,  tail_b, 's');
         }
-        if (*head_b)
-            optimize_stack_b(head_b, tail_b);
+        //if (*head_b)
+        //    optimize_stack_b(head_b, tail_b);
 
     }
     if (*head_b)

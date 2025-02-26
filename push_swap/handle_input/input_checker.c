@@ -110,34 +110,6 @@ void find_lis(t_node *head, int size, int pass) //!NORM! pass one variable e.g. 
         max_index = prev[max_index];
     }
 
-    /*
-    printf(":: :: :: :: :: :: :: :: :: :: :: :: :: :: :: \n\n");
-
-    i = 0;
-    j = 0;
-    printf("lis array :: ");
-    while (j < size)
-    {
-        printf("[%d]", lis[j]);
-        j++;
-    }
-    j = 0;
-    printf("\n");
-    printf("prev array :: ");
-    while (j < size)
-    {
-        printf("[%d]", prev[j]);
-        j++;
-    }
-    printf("\n\n");
-    while (i < size)
-    {
-        printf("value %d :: %d and is_lis %d\n", i, arr[i]->value, arr[i]->is_lis);
-        i++;
-    }
-    printf("\n:: :: :: :: :: :: :: :: :: :: :: :: :: :: :: \n\n");
-    */
-
     free(lis);
     free(prev);
     free(arr);

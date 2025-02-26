@@ -21,11 +21,17 @@ typedef enum e_move {
     RRX
 } t_move;
 
+typedef enum e_b_rotation{
+    RB,
+     RRB
+} t_b_rotation;
+
 typedef struct s_cheapest {
     int iterations;
     int other_r;
     int price;
     t_move move;
+    t_b_rotation dir;
 } t_cheapest;
 
 void free_split_array(char **array);
@@ -65,8 +71,9 @@ t_node **make_array(t_node *head, int size);
 void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b);
 char find_cheaper_stack(t_node **head_a, t_node **tail_a, t_node **head_b);
 t_cheapest *find_cheapest_path_a(t_node **head_b, t_node **head_a, t_node **tail_a);
-t_cheapest *find_cheapest_path_b(t_node **head_a, t_node **tail_a, t_node **head_b);
+t_cheapest *find_cheapest_path_rev_a(t_node **head_b, t_node **head_a, t_node **tail_a);
 t_cheapest find_cheapest_arr(t_cheapest *arr, t_node **head);
+t_cheapest return_cheapest_arr(t_node **head_b, t_node **head_a, t_node **tail_a);
 t_cheapest price_calc(t_cheapest cost);
 
 void print_stack_a_and_stack_b(t_node *head_a, t_node *head_b);
