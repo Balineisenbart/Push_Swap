@@ -13,7 +13,6 @@ int main(int argc, char **argv)
 
         if (parse_input(argc, argv, &head_a, &tail_a))
         {
-            print_stack_a_and_stack_b(head_a, head_b);
 
             if (!needs_sorting(head_a))
                 return 0;
@@ -26,7 +25,7 @@ int main(int argc, char **argv)
             else if (stack_len > 5)
                 complex_sorting(&head_a, &tail_a, &head_b, &tail_b, stack_len);
         
-            print_stack_a_and_stack_b(head_a, head_b);
+            //print_stack_a_and_stack_b(head_a, head_b);
 
         } 
 

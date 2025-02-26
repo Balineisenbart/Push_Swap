@@ -7,7 +7,7 @@ void complex_sorting(t_node **head_a, t_node **tail_a, t_node **head_b, t_node *
     index_input(head_a, stack_len);
     find_lis(*head_a, stack_len, 1);
 
-    
+    //print_stack_a_and_stack_b(*head_a, *head_b);   
     
 
     while (!all_lis(*head_a)) //|| (needs_sorting(*head_a)))
