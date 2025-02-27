@@ -12,7 +12,7 @@ typedef struct s_node {
     int value;
     struct s_node *next;
     struct s_node *prev;
-    int is_lis;
+    int chunk;
     int index;
 } t_node;
 
@@ -23,7 +23,7 @@ typedef enum e_move {
 
 typedef enum e_b_rotation{
     RB,
-     RRB
+    RRB
 } t_b_rotation;
 
 typedef struct s_cheapest {
@@ -60,13 +60,22 @@ int needs_sorting(t_node *stack);
 int parse_input(int argc, char **argv, t_node **stack, t_node **tail);
 int stack_length(t_node *head);
 void find_lis(t_node *head, int size, int pass);
-int find_cheapest_non_lis(t_node *head, int stack_len);
+int find_cheapest_chunk_element(t_node *head, int stack_len);
 void index_input(t_node **head_a, int size);
 void optimize_stack_b(t_node **head_b, t_node **tail_b);
 bool check_optimal_pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b);
 void complex_sorting(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, int stack_len);
-bool all_lis(t_node *head_a);
+bool contains_chunk(t_node *head_a);
+int determine_chunk_number(t_node *head, int length);
+void return_chunk(t_node **head_a, t_node **head_b, int length);
+void largest_bubble_up(t_node *head_b, int length);
+void position_a(t_node **head_a, t_node **head_b);
+
+
 t_node **make_array(t_node *head, int size);
+
+
+
 
 void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b);
 char find_cheaper_stack(t_node **head_a, t_node **tail_a, t_node **head_b);

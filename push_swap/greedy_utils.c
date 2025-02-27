@@ -1,7 +1,43 @@
 
 #include "push_swap.h"
 
-int find_cheapest_non_lis(t_node *head, int stack_len)
+
+int determine_chunk_number(t_node *head, int length)
+{
+    int max_chunks;
+    int chunk_size;
+
+    if (length <= 100)
+        max_chunks = 5;
+    else if (length <= 500)
+        max_chunks = 10;
+    else
+        max_chunks = = 5 + ((stack_len - 100) * 5) / 400;
+
+    chunk_size = length / max_chunks;
+
+    return chunk_size;
+}
+
+void define_chunk(t_node **head, int current_chunk, int previous_chunk)
+{
+    t_node *current;
+    int i;
+    int n;
+    
+    current = head;
+    i = 0;
+    n = stack_length(head);
+    while (i < n && current_chunk <= n) 
+    {
+        if (current->index <= current_chunk && current->index > previous_chunk)
+            current->chunk = 1;
+        current = current->next;
+    }
+}
+
+
+int find_cheapest_chunk_element(t_node *head, int stack_len)
 {
     t_node *top;
     t_node *bottom;
@@ -13,12 +49,12 @@ int find_cheapest_non_lis(t_node *head, int stack_len)
     top_steps = 0;
     bottom_steps = 0;
 
-    while (top->is_lis && top_steps < stack_len)
+    while (!(top->chunk) && top_steps < stack_len)
     {
         top = top->next;
         top_steps++;
     }
-    while (bottom->is_lis && bottom_steps < stack_len)
+    while (!(bottom->chunk) && bottom_steps < stack_len)
     {
         bottom = bottom->prev;
         bottom_steps++;
@@ -59,16 +95,21 @@ bool check_optimal_pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node 
     return 0;
 }
 
-bool all_lis(t_node *head_a)
+bool contains_chunk(t_node *head_a)
 {
     t_node *current;
+    int n;
+    int i;
 
     current = head_a;
-    while (current->next != head_a)
+    n = stack_length(head_a);
+    i = 0;
+    while (i < n)
     {
-        if (!current->is_lis)
-            return false;
+        if (current->chunk)
+            return true;
         current = current->next;
+        i++;
     }
-    return current->is_lis;
+    return false;
 }
