@@ -2,19 +2,22 @@
 #include "push_swap.h"
 
 
-int determine_chunk_number(t_node *head, int length)
+int determine_chunk_number(int length)
 {
     int max_chunks;
     int chunk_size;
 
     if (length <= 100)
         max_chunks = 5;
-    else if (length <= 500)
+    else if (length > 100 && length <= 500)
         max_chunks = 10;
     else
-        max_chunks = = 5 + ((stack_len - 100) * 5) / 400;
+        max_chunks = 5 + ((length - 100) * 5) / 400;
 
     chunk_size = length / max_chunks;
+
+    if (chunk_size == 1)
+        chunk_size++;
 
     return chunk_size;
 }
@@ -25,14 +28,15 @@ void define_chunk(t_node **head, int current_chunk, int previous_chunk)
     int i;
     int n;
     
-    current = head;
+    current = *head;
     i = 0;
-    n = stack_length(head);
+    n = stack_length(*head);
     while (i < n && current_chunk <= n) 
     {
-        if (current->index <= current_chunk && current->index > previous_chunk)
+        if (current->index <= previous_chunk && current->index >= current_chunk)
             current->chunk = 1;
         current = current->next;
+        i++;
     }
 }
 
@@ -78,22 +82,6 @@ void optimize_stack_b(t_node **head_b, t_node **tail_b)
 
 }
 
-bool check_optimal_pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
-{
-    if (!(*head_b || *tail_b))
-        return 0;
-    else if ((*head_a)->index == (*head_b)->index + 1)
-    {
-        (*head_b)->is_lis = 1; 
-
-        pa(head_a, tail_a, head_b, tail_b, 's');
-        
-        
-        return 1;
-    }
-
-    return 0;
-}
 
 bool contains_chunk(t_node *head_a)
 {

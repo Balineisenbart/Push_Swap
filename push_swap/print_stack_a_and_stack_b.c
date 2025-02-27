@@ -30,7 +30,7 @@ void print_stack_a_and_stack_b(t_node *head_a, t_node *head_b)
     {
         if (cur_a && total_a > 0)
         {
-            printf(" %2d - %d", cur_a->value, cur_a->is_lis);
+            printf(" %2d - %d", cur_a->value, cur_a->chunk);
             cur_a = cur_a->next;
             total_a--;
         }
@@ -41,7 +41,7 @@ void print_stack_a_and_stack_b(t_node *head_a, t_node *head_b)
 
         if (cur_b && total_b > 0)
         {
-            printf("%2d - %d", cur_b->value, cur_b->is_lis);
+            printf("%2d - %d", cur_b->value, cur_b->chunk);
             cur_b = cur_b->next;
             total_b--;
         }

@@ -1,9 +1,9 @@
 
 #include "push_swap.h"
 
-void return_chunk(t_node **head_a, t_node **head_b, int length)
+/*void return_chunk(t_node **head_a, t_node **head_b, t_node **tail_b, int length)
 {
-
+    finish(head_a, tail_a, head_b, tail_b);
     position_a(head_a, head_b);
     while (head_b)
     {
@@ -14,11 +14,11 @@ void return_chunk(t_node **head_a, t_node **head_b, int length)
 
 void position_a(t_node **head_a, t_node **head_b)
 {
-    
+
 
 }
 
-void largest_bubble_up(t_node *head_b, int length)
+void largest_bubble_up(t_node **head_b, t_node **tail_b, int length)
 {
     int largest_element;
     int count;
@@ -37,3 +37,4 @@ void largest_bubble_up(t_node *head_b, int length)
             rb(head_b, tail_b, 's'); //here i could already position stack a with rr
     }
 }
+*/

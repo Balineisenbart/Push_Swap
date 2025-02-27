@@ -59,16 +59,15 @@ int is_valid(char *numbers);
 int needs_sorting(t_node *stack);
 int parse_input(int argc, char **argv, t_node **stack, t_node **tail);
 int stack_length(t_node *head);
-void find_lis(t_node *head, int size, int pass);
 int find_cheapest_chunk_element(t_node *head, int stack_len);
 void index_input(t_node **head_a, int size);
 void optimize_stack_b(t_node **head_b, t_node **tail_b);
-bool check_optimal_pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b);
 void complex_sorting(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, int stack_len);
 bool contains_chunk(t_node *head_a);
-int determine_chunk_number(t_node *head, int length);
+int determine_chunk_number(int length);
+void define_chunk(t_node **head, int current_chunk, int previous_chunk);
 void return_chunk(t_node **head_a, t_node **head_b, int length);
-void largest_bubble_up(t_node *head_b, int length);
+void largest_bubble_up(t_node **head_b, t_node **tail_b, int length);
 void position_a(t_node **head_a, t_node **head_b);
 
 
