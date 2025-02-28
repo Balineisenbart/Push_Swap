@@ -12,7 +12,7 @@ void    pb(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, c
     push_to_other_stack(head_b, tail_b, temp);
     
     if (flag == 's')
-        printf("pb\n");
+        write(1, "pb\n", 3);
 }
 
 void pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, char flag)
@@ -26,7 +26,7 @@ void pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, char
     push_to_other_stack(head_a, tail_a, temp);
 
     if (flag == 's')
-        printf("pa\n");
+        write(1, "pa\n", 3);
 }
 
 t_node *maintain_circularity(t_node **head, t_node **tail)

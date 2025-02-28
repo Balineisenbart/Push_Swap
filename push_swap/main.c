@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 
     }
     else
-        printf("Error\n");
+        write(1, "Error\n", 6);
 
     return 0;
 }

@@ -24,38 +24,5 @@ void sa(t_node **head_a, t_node **tail_a, char flag) //call only when !NULL && !
         (*head_a)->prev = *tail_a;
     }
     if (flag == 's')
-        printf("sa\n");
-}
-
-void sb(t_node **head_b, t_node **tail_b, char flag)
-{
-    t_node *temp;
-
-   if ((*head_b)->next == *tail_b)
-    {
-        temp = *tail_b;
-        *tail_b = *head_b;
-        *head_b = temp;
-    }
-    else
-    {
-        temp = *head_b;
-        *head_b = (*head_b)->next;
-        temp->next = (*head_b)->next;
-        (*head_b)->next->prev = temp;
-        (*head_b)->next = temp;
-        temp->prev = *head_b;
-        (*tail_b)->next = *head_b;
-        (*head_b)->prev = *tail_b;
-    }
-    if (flag == 's')
-        printf("sb\n");
-}
-
-void ss(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, char flag)
-{
-    sa(head_a, tail_a, 'n');
-    sb(head_b, tail_b, 'n');
-    if (flag == 'd')
-        printf("ss\n");
+        write(1, "sa\n", 3);
 }

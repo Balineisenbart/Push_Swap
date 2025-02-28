@@ -3,10 +3,10 @@
 #ifndef PUSH_SWAP_H
 #   define PUSH_SWAP_H
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <limits.h>
+#include <unistd.h>
 
 typedef struct s_node {
     int value;
@@ -34,6 +34,7 @@ typedef struct s_cheapest {
     t_b_rotation dir;
 } t_cheapest;
 
+int	ft_atoi(const char *str);
 void free_split_array(char **array);
 char **ft_split(const char *str, char delimiter);
 int find_largest_elements_position(t_node *head);
@@ -52,8 +53,6 @@ void rra(t_node **head_a, t_node **tail_a, char flag);
 void rrb(t_node **head_b, t_node **tail_b, char flag);
 void rrr(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, char flag);
 void sa(t_node **head_a, t_node **tail_a, char flag);
-void sb(t_node **head_b, t_node **tail_b, char flag);
-void ss(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, char flag);
 void add_to_stack(t_node **head, t_node **tail, int input_value);
 void bubble_up_a(t_node **head_a, t_node **tail_a);
 int has_duplicates(t_node *stack, int input_value);
