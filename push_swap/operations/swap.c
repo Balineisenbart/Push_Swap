@@ -13,12 +13,12 @@ void sa(t_node **head_a, t_node **tail_a, char flag) //call only when !NULL && !
     }
     else
      {   
-        temp = *head_a; //save node1
-        *head_a = (*head_a)->next; //make node2 head
-        temp->next = (*head_a)->next; //connect new node1 with node3, node1 effectively becomes node2
-        (*head_a)->next->prev = temp; //and node3 with node1
-        (*head_a)->next = temp; //connect new node1 to new node2
-        temp->prev = *head_a; //connect back: new node2 to new node1
+        temp = *head_a;
+        *head_a = (*head_a)->next;
+        temp->next = (*head_a)->next;
+        (*head_a)->next->prev = temp;
+        (*head_a)->next = temp;
+        temp->prev = *head_a;
 
         (*tail_a)->next = *head_a;
         (*head_a)->prev = *tail_a;

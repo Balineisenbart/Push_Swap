@@ -58,33 +58,23 @@ int has_duplicates(t_node *stack, int input_value);
 int is_valid(char *numbers);
 int needs_sorting(t_node *stack);
 int parse_input(int argc, char **argv, t_node **stack, t_node **tail);
+int two_args(char **argv, t_node **stack, t_node **tail);
+int more_args(int argc, char **argv, t_node **stack, t_node **tail);
 int stack_length(t_node *head);
 int find_cheapest_chunk_element(t_node *head, int stack_len);
 void index_input(t_node **head_a, int size);
-void optimize_stack_b(t_node **head_b, t_node **tail_b);
+int *sort_arr(int *arr, int size);
+void indexing(int *arr, t_node **head_a, int size);
 void complex_sorting(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, int stack_len);
 bool contains_chunk(t_node *head_a);
 int determine_chunk_number(int length);
 void define_chunk(t_node **head, int current_chunk, int previous_chunk);
-void return_chunk(t_node **head_a, t_node **head_b, int length);
-void largest_bubble_up(t_node **head_b, t_node **tail_b, int length);
-void position_a(t_node **head_a, t_node **head_b);
-
-
-t_node **make_array(t_node *head, int size);
-
-
-
 
 void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b);
-char find_cheaper_stack(t_node **head_a, t_node **tail_a, t_node **head_b);
 t_cheapest *find_cheapest_path_a(t_node **head_b, t_node **head_a, t_node **tail_a);
 t_cheapest *find_cheapest_path_rev_a(t_node **head_b, t_node **head_a, t_node **tail_a);
 t_cheapest find_cheapest_arr(t_cheapest *arr, t_node **head);
 t_cheapest return_cheapest_arr(t_node **head_b, t_node **head_a, t_node **tail_a);
 t_cheapest price_calc(t_cheapest cost);
-
-void print_stack_a_and_stack_b(t_node *head_a, t_node *head_b);
-
 
 #endif

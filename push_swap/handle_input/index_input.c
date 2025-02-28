@@ -7,24 +7,31 @@ void index_input(t_node **head_a, int size)
     t_node *current;
     int *arr;
     int i;
-    int j;
-    int temp;
 
     arr = malloc (size * sizeof(int));
     if (!arr)
         return;
     current = *head_a;
     i = 0;
-
-    while (i != size) //values of list stored in arr
+    while (i != size) //copy list to array
     {
         arr[i] = current->value;
         current = current->next;
         i++;
     }
+    arr = sort_arr(arr, size);
+    indexing(arr, head_a, size);
+}
+
+int *sort_arr(int *arr, int size)
+{
+    int i;
+    int j;
+    int temp;
 
     i = 0;
-    while (i < size - 1) //sort array ascending - bubble up
+    j = 0;
+    while (i < size - 1) 
     {
         j = i + 1;
         while (j < size)
@@ -39,11 +46,19 @@ void index_input(t_node **head_a, int size)
         }
         i++;
     }
+    return arr;
+}
+
+void indexing(int *arr, t_node **head_a, int size)
+{
+    t_node *current;
+    int i;
+    int j; 
 
     current = *head_a;
-
+    i = 0;
     j = 0;
-    while (j < size) //assign indexing to nodes
+    while (j < size)
     {
         i = 0;
         while (i < size)
@@ -51,8 +66,6 @@ void index_input(t_node **head_a, int size)
             if (current->value == arr[i])
             {
                 current->index = i;
-                //printf("index %d - value %d\n", i, current->value);
-
                 break;
             }
             i++;

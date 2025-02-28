@@ -16,10 +16,8 @@ void    pb(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, c
     }
     else
     {
-        // Unlink temp from its neighbors
         temp->prev->next = temp->next;
         temp->next->prev = temp->prev;
-        // Update head_a: if temp was the head, now head_a becomes temp->next
         *head_a = temp->next;
     }
     if (*head_b == NULL)
@@ -47,10 +45,7 @@ void pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, char
 
     if (!*head_b)
         return;
-
     temp = *head_b;
-
-    // Unlink temp from B:
     if (*head_b == *tail_b)
     {
         *head_b = NULL;
@@ -58,16 +53,11 @@ void pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, char
     }
     else
     {
-        // Unlink temp from its neighbors
         temp->prev->next = temp->next;
         temp->next->prev = temp->prev;
-        // Update head_b: if temp was the head, now head_b becomes temp->next
         *head_b = temp->next;
-        // Optionally update tail_b if needed (not needed if temp wasn't tail)
     }
-    
-    // Insert temp into A:
-    if (!*head_a)
+        if (!*head_a)
     {
         temp->next = temp->prev = temp;
         *head_a = temp;

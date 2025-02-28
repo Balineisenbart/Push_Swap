@@ -31,10 +31,10 @@ void free_split_array(char **array)
 
     while (array[i])
     {
-        free(array[i]); // Free each substring
+        free(array[i]);
         i++;
     }
-    free(array); // Free the array itself
+    free(array);
 }
 
 int find_largest_elements_position(t_node *head)
@@ -97,7 +97,6 @@ void bubble_up_a(t_node **head_a, t_node **tail_a)
     int smallest_elements_position = find_smallest_elements_position(*head_a);
     int reverse_moves = stack_len - smallest_elements_position;
     
-    // Choose shortest route (ra or rra)
     if (smallest_elements_position > stack_len / 2)
     {
         while (reverse_moves--)
