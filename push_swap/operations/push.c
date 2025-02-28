@@ -8,33 +8,9 @@ void    pb(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, c
     if (!*head_a)
         return;
 
-    temp = *head_a;
-    if (*head_a == *tail_a)
-    {
-        *head_a = NULL;
-        *tail_a = NULL;
-    }
-    else
-    {
-        temp->prev->next = temp->next;
-        temp->next->prev = temp->prev;
-        *head_a = temp->next;
-    }
-    if (*head_b == NULL)
-    {
-        temp->next = temp->prev = temp;
-        *head_b = temp;
-        *tail_b = temp;
-    }
-    else
-    {
-        temp->next = *head_b;
-        temp->prev = *tail_b;
-        (*head_b)->prev = temp;
-        (*tail_b)->next = temp;
-        *head_b = temp;
-    }
-    temp = NULL;
+    temp = maintain_circularity(head_a, tail_a);
+    push_to_other_stack(head_b, tail_b, temp);
+    
     if (flag == 's')
         printf("pb\n");
 }
@@ -42,36 +18,51 @@ void    pb(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, c
 void pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, char flag)
 {
     t_node *temp;
-
+    
     if (!*head_b)
         return;
-    temp = *head_b;
-    if (*head_b == *tail_b)
+        
+    temp = maintain_circularity(head_b, tail_b);
+    push_to_other_stack(head_a, tail_a, temp);
+
+    if (flag == 's')
+        printf("pa\n");
+}
+
+t_node *maintain_circularity(t_node **head, t_node **tail)
+{
+    t_node *temp;
+
+    temp= *head;
+    if (*head == *tail)
     {
-        *head_b = NULL;
-        *tail_b = NULL;
+        *head = NULL;
+        *tail = NULL;
     }
-    else
+    else 
     {
         temp->prev->next = temp->next;
         temp->next->prev = temp->prev;
-        *head_b = temp->next;
+        *head = temp->next;
     }
-        if (!*head_a)
+    return temp;
+}
+
+void push_to_other_stack(t_node **head_other, t_node **tail_other, t_node *temp)
+{
+    if (*head_other == NULL) 
     {
         temp->next = temp->prev = temp;
-        *head_a = temp;
-        *tail_a = temp;
+        *head_other = temp;
+        *tail_other = temp;
     }
     else
     {
-        temp->next = *head_a;
-        temp->prev = *tail_a;
-        (*tail_a)->next = temp;
-        (*head_a)->prev = temp;
-        *head_a = temp;
+        temp->next = *head_other;
+        temp->prev = *tail_other;
+        (*head_other)->prev = temp;
+        (*tail_other)->next = temp;
+        *head_other = temp;
     }
     temp = NULL;
-    if (flag == 's')
-        printf("pa\n");
 }
