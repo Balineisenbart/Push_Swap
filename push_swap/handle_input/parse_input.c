@@ -16,7 +16,7 @@ int two_args(char **argv, t_node **stack, t_node **tail)
 {
     int i;
     int j;
-    int input_value;
+    long input_value;
     char **numbers;
 
     i = 1;
@@ -24,12 +24,12 @@ int two_args(char **argv, t_node **stack, t_node **tail)
     numbers = ft_split(argv[i], ' ');
     while (numbers[j] != NULL)
     {
-        input_value = ft_atoi(numbers[j]); //check for overflow, also free stack if overflow happens
-        if (!(is_valid(numbers[j])) || has_duplicates(*stack, input_value))
+        input_value = ft_atoi(numbers[j]); 
+        if (!(is_valid(numbers[j])) || has_duplicates(*stack, input_value)) //overflow handled in has_duplicate (with input value)
         {
             free_stack(stack, tail);
             free_split_array(numbers); 
-            write(1, "Error\n", 6);
+            write(2, "Error\n", 6);
             return 0;
         }
         add_to_stack(stack, tail, input_value);
@@ -42,16 +42,16 @@ int two_args(char **argv, t_node **stack, t_node **tail)
 int more_args(int argc, char **argv, t_node **stack, t_node **tail)
 {
     int i;
-    int input_value;
+    long input_value;
 
     i = 1;
     while (i < argc)
     {    
-        input_value = ft_atoi(argv[i]); //check if my atoi has overflow handling
+        input_value = ft_atoi(argv[i]);
         if(!(is_valid(argv[i])) || has_duplicates(*stack, input_value))
         {
             free_stack(stack, tail);
-            write(1, "Error\n", 6);
+            write(2, "Error\n", 6);
             return 0;
         }
         if (*argv[i] == ' ')
@@ -86,24 +86,4 @@ void add_to_stack(t_node **head, t_node **tail, int input_value)
         (*head)->prev = new_node;
         *tail = new_node;
     }
-}
-
-t_node **make_array(t_node *head, int size)
-{
-    int i;
-    t_node **arr;
-    t_node *current;
-
-    i = 0;
-    arr = malloc (size * sizeof(t_node *));
-    if (!arr)
-        return NULL;
-    current = head;
-    while (i < size)
-    {
-        arr[i] = current;
-        i++;
-        current = current->next;
-    }
-    return arr;
 }

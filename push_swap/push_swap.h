@@ -34,7 +34,7 @@ typedef struct s_cheapest {
     t_b_rotation dir;
 } t_cheapest;
 
-int	ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 void free_split_array(char **array);
 char **ft_split(const char *str, char delimiter);
 int find_largest_elements_position(t_node *head);
@@ -55,7 +55,7 @@ void rrr(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, cha
 void sa(t_node **head_a, t_node **tail_a, char flag);
 void add_to_stack(t_node **head, t_node **tail, int input_value);
 void bubble_up_a(t_node **head_a, t_node **tail_a);
-int has_duplicates(t_node *stack, int input_value);
+int has_duplicates(t_node *stack, long input_value);
 int is_valid(char *numbers);
 int needs_sorting(t_node *stack);
 int parse_input(int argc, char **argv, t_node **stack, t_node **tail);

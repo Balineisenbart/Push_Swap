@@ -19,11 +19,13 @@ int is_valid(char *numbers)
     return 1;
 }
 
-int has_duplicates(t_node *stack, int input_value)
+int has_duplicates(t_node *stack, long input_value)
 {
     t_node *start = stack;
     if (stack == NULL)
         return 0;
+    if (input_value > INT_MAX || input_value < INT_MIN)
+        return 1;
     while (1)
     {
         if (stack->value == input_value)

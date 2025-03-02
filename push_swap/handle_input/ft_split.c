@@ -1,7 +1,5 @@
-#include <stdlib.h>
-#include <string.h>
+#include "push_swap.h"
 
-// Helper function to count words in the string
 static int count_words(const char *str, char delimiter)
 {
     int count = 0;
@@ -23,18 +21,34 @@ static int count_words(const char *str, char delimiter)
     return count;
 }
 
-// Helper function to duplicate a substring
+static char	*ft_strncpy(char *dest, const char *src, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n && src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
+}
+
 static char *strdup_split(const char *start, const char *end)
 {
     char *word = malloc(end - start + 1);
     if (!word)
         return NULL;
-    strncpy(word, start, end - start);
+    ft_strncpy(word, start, end - start);
     word[end - start] = '\0';
     return word;
 }
 
-// Main ft_split function
 char **ft_split(const char *str, char delimiter)
 {
     char **result;
@@ -44,12 +58,10 @@ char **ft_split(const char *str, char delimiter)
 
     if (!str)
         return NULL;
-
     word_count = count_words(str, delimiter);
     result = malloc((word_count + 1) * sizeof(char *));
     if (!result)
         return NULL;
-
     while (*str)
     {
         if (*str != delimiter)
@@ -74,9 +86,9 @@ char **ft_split(const char *str, char delimiter)
 }
 
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int	res;
+	long	res;
 	int	isnegative;
 	int	i;
 
