@@ -73,10 +73,10 @@ int determine_chunk_number(int length);
 void define_chunk(t_node **head, int current_chunk, int previous_chunk);
 
 void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b);
-t_cheapest *find_cheapest_path_a(t_node **head_b, t_node **head_a, t_node **tail_a);
-t_cheapest *find_cheapest_path_rev_a(t_node **head_b, t_node **head_a, t_node **tail_a);
+t_cheapest *find_cheapest_path_a(t_node **head_b, t_node **head_a, t_node **tail_a, t_node **tail_b);
+t_cheapest *find_cheapest_path_rev_a(t_node **head_b, t_node **head_a, t_node **tail_a, t_node **tail_b);
 t_cheapest find_cheapest_arr(t_cheapest *arr, t_node **head);
-t_cheapest return_cheapest_arr(t_node **head_b, t_node **head_a, t_node **tail_a);
+t_cheapest return_cheapest_arr(t_node **head_b, t_node **head_a, t_node **tail_a, t_node **tail_b);
 t_cheapest price_calc(t_cheapest cost);
 
 #endif

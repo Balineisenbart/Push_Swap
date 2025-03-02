@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 
             if (!needs_sorting(head_a))
             {
-                free_stack(&head_a, &tail_a); //added - already sorted input, fix leak
+                free_stack(&head_a, &tail_a);
                 free_stack(&head_b, &tail_b);
                 return 0;
             }

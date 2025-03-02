@@ -62,15 +62,25 @@ int more_args(int argc, char **argv, t_node **stack, t_node **tail)
     return 1;
 }
 
+static void init_new_node(t_node *new_node, int input_value)
+{
+    new_node->chunk = 0;
+    new_node->index = 0;
+    new_node->value = input_value;
+    new_node->next = NULL;
+    new_node->prev = NULL;
+}
+
 void add_to_stack(t_node **head, t_node **tail, int input_value)
 {
     t_node *new_node = malloc (sizeof(t_node));
     if (!new_node)
     {
         free (new_node);
+        free_stack(head, tail);
         exit (EXIT_FAILURE);
     }
-    new_node->value = input_value;
+    init_new_node(new_node, input_value);
     if (*head == NULL)
     {
         new_node->next = new_node;

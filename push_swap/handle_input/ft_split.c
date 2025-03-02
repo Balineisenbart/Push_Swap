@@ -1,89 +1,99 @@
 #include "push_swap.h"
 
-static int count_words(const char *str, char delimiter)
+static int count_words(const char *s, char d)
 {
-    int count = 0;
-    int in_word = 0;
+    int cnt;
+    int in_word;
 
-    while (*str)
+    cnt = 0;
+    in_word = 0;
+    while (*s)
     {
-        if (*str != delimiter && !in_word)
+        if (*s != d && !in_word)
         {
             in_word = 1;
-            count++;
+            cnt++;
         }
-        else if (*str == delimiter)
-        {
+        else if (*s == d)
             in_word = 0;
-        }
-        str++;
+        s++;
     }
-    return count;
+    return (cnt);
 }
 
-static char	*ft_strncpy(char *dest, const char *src, size_t n)
+static char *ft_strncpy(char *dst, const char *src, size_t n)
 {
-	size_t	i;
+    size_t i;
 
-	i = 0;
-	while (i < n && src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+    i = 0;
+    while (i < n && src[i])
+    {
+        dst[i] = src[i];
+        i++;
+    }
+    while (i < n)
+    {
+        dst[i] = '\0';
+        i++;
+    }
+    return (dst);
 }
 
 static char *strdup_split(const char *start, const char *end)
 {
-    char *word = malloc(end - start + 1);
+    char *word;
+
+    word = malloc(end - start + 1);
     if (!word)
-        return NULL;
+        return (NULL);
     ft_strncpy(word, start, end - start);
     word[end - start] = '\0';
-    return word;
+    return (word);
 }
 
-char **ft_split(const char *str, char delimiter)
+static char **main_split(const char *str, char **res, char d, int i)
 {
-    char **result;
-    int word_count;
-    int i = 0;
     const char *start;
 
-    if (!str)
-        return NULL;
-    word_count = count_words(str, delimiter);
-    result = malloc((word_count + 1) * sizeof(char *));
-    if (!result)
-        return NULL;
     while (*str)
     {
-        if (*str != delimiter)
+        if (*str != d)
         {
             start = str;
-            while (*str && *str != delimiter)
+            while (*str && *str != d)
                 str++;
-            result[i] = strdup_split(start, str);
-            if (!result[i++])
+            res[i] = strdup_split(start, str);
+            if (!res[i])
             {
                 while (--i >= 0)
-                    free(result[i]);
-                free(result);
-                return NULL;
+                    free(res[i]);
+                return (free(res), NULL);
             }
+            i++;
         }
         else
             str++;
     }
-    result[i] = NULL;
-    return result;
+    res[i] = NULL;
+    return res;
 }
+
+
+char **ft_split(const char *str, char d)
+{
+    char **res;
+    int wc;
+
+    if (!str)
+        return (NULL);
+    wc = count_words(str, d);
+    res = malloc((wc + 1) * sizeof(char *));
+    if (!res)
+        return (NULL);
+    res = main_split(str, res, d, 0);
+    return (res);
+}
+
 
 
 long	ft_atoi(const char *str)

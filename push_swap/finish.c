@@ -74,7 +74,7 @@ void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
         return;
     while (*head_b)
     {
-        cost = return_cheapest_arr(head_b, head_a, tail_a);
+        cost = return_cheapest_arr(head_b, head_a, tail_a, tail_b);
         if (cost.move == RX && cost.dir == RB)
             RX_RB(cost, head_a, tail_a, head_b, tail_b);
         else if (cost.move == RRX && cost.dir == RB)
@@ -87,11 +87,11 @@ void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
     }
 }
 
-t_cheapest return_cheapest_arr(t_node **head_b, t_node **head_a, t_node **tail_a)
+t_cheapest return_cheapest_arr(t_node **head_b, t_node **head_a, t_node **tail_a, t_node **tail_b)
 {
 
-    t_cheapest *arr_a = find_cheapest_path_a(head_b, head_a, tail_a);
-    t_cheapest *arr_rev = find_cheapest_path_rev_a(head_b, head_a, tail_a);
+    t_cheapest *arr_a = find_cheapest_path_a(head_b, head_a, tail_a, tail_b);
+    t_cheapest *arr_rev = find_cheapest_path_rev_a(head_b, head_a, tail_a, tail_b);
     t_cheapest cheapest;
     t_cheapest cheapest1;
     t_cheapest cheapest2;
@@ -173,7 +173,7 @@ static t_cheapest set_arr(t_node *candidate, t_node **head_a, t_node **tail_a, i
 
 }
 
-t_cheapest *find_cheapest_path_a(t_node **head_b, t_node **head_a, t_node **tail_a)
+t_cheapest *find_cheapest_path_a(t_node **head_b, t_node **head_a, t_node **tail_a, t_node **tail_b)
 {
     t_node *candidate;
     t_cheapest *arr;
@@ -187,7 +187,7 @@ t_cheapest *find_cheapest_path_a(t_node **head_b, t_node **head_a, t_node **tail
     total_len = stack_length(*head_a) + stack_length(*head_b);
     arr = malloc (n * sizeof(t_cheapest));
     if (!arr)
-        return (free(arr), NULL); //!!!!!!!!!!!
+        return (free(arr), free_stack(head_a, tail_a), free_stack(head_b, tail_b), NULL);
     while (i < n)
     {
         arr[i] = set_arr(candidate, head_a, tail_a, total_len, i);
@@ -198,7 +198,7 @@ t_cheapest *find_cheapest_path_a(t_node **head_b, t_node **head_a, t_node **tail
 }
 
 
-t_cheapest *find_cheapest_path_rev_a(t_node **head_b, t_node **head_a, t_node **tail_a)
+t_cheapest *find_cheapest_path_rev_a(t_node **head_b, t_node **head_a, t_node **tail_a, t_node **tail_b)
 {
     t_node *candidate;
     t_cheapest *arr;
@@ -212,7 +212,7 @@ t_cheapest *find_cheapest_path_rev_a(t_node **head_b, t_node **head_a, t_node **
     total_len = stack_length(*head_a) + stack_length(*head_b);
     arr = malloc (n * sizeof(t_cheapest));
     if (!arr)
-        return (free(arr), NULL); //!!!!!!!!!!!
+        return (free(arr), free_stack(head_a, tail_a), free_stack(head_b, tail_b), NULL);
     while (i < n)
     {
         arr[i] = set_arr(candidate, head_a, tail_a, total_len, i);
