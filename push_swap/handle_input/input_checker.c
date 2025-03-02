@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_checker.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/02 11:36:06 by codespace         #+#    #+#             */
+/*   Updated: 2025/03/02 12:30:53 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -18,7 +29,6 @@ int is_valid(char *numbers)
     }
     return 1;
 }
-
 int has_duplicates(t_node *stack, long input_value)
 {
     t_node *start = stack;
@@ -36,7 +46,6 @@ int has_duplicates(t_node *stack, long input_value)
     }
    return 0; 
 }
-
 int needs_sorting(t_node *stack)
 {
     t_node *start = stack;
@@ -53,7 +62,3 @@ int needs_sorting(t_node *stack)
     }
     return 0;
 }
-
-
-
-

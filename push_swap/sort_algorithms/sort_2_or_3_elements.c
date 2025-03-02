@@ -1,17 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_2_or_3_elements.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/02 11:36:50 by codespace         #+#    #+#             */
+/*   Updated: 2025/03/02 12:28:44 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "push_swap.h"
 
 void sort_2_or_3_elements(t_node **head, t_node **tail)
 {
-    //if largest_value = stack_length: sa
-    //if largest_value = 0: ra & sa()
-    //else 
-    // --if smallest value = stack_length: rra
-    // --else: rra & sa
-    //after each operation print & check if needs sorting
-    //  1   1   2   3   2   3
-    //  2   3   3   2   1   1
-    //  3   2   1   1   3   2
     while(needs_sorting(*head))
     {
         if (find_largest_elements_position(*head) == stack_length(*head) - 1)

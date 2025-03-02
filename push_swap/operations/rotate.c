@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/02 11:36:33 by codespace         #+#    #+#             */
+/*   Updated: 2025/03/02 12:29:44 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ra(t_node **head_a, t_node **tail_a, char flag) //call only when !NULL && !(*head_a)->next = *head_a
+void ra(t_node **head_a, t_node **tail_a, char flag) 
 {
     if (*head_a == *tail_a)
         return;
@@ -32,7 +43,6 @@ void rb(t_node **head_b, t_node **tail_b, char flag)
     if (flag == 's')
         write(1, "rb\n", 3);
 }
-
 void rr(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, char flag)
 {
     ra(head_a, tail_a, 'n');

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/02 11:36:31 by codespace         #+#    #+#             */
+/*   Updated: 2025/03/02 12:29:21 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -16,7 +27,6 @@ void rra(t_node **head_a, t_node **tail_a, char flag)
     if (flag == 's')
         write(1, "rra\n", 4);
 }
-
 void rrb(t_node **head_b, t_node **tail_b, char flag)
 {
     if (*head_b == *tail_b)
@@ -32,7 +42,6 @@ void rrb(t_node **head_b, t_node **tail_b, char flag)
     if (flag == 's')
         write(1, "rrb\n", 4);
 }
-
 void rrr(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, char flag)
 {
     rra(head_a, tail_a, 'n');

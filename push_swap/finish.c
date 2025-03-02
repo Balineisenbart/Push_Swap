@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   finish.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/02 11:37:00 by codespace         #+#    #+#             */
+/*   Updated: 2025/03/02 12:28:32 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -25,7 +35,6 @@ static void RX_RB(t_cheapest cost, t_node **head_a, t_node **tail_a, t_node **he
             rb(head_b, tail_b, 's');
     }
 }
-
 static void RRX_RRB(t_cheapest cost, t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
 {
     if (cost.iterations >= cost.other_r)
@@ -49,7 +58,6 @@ static void RRX_RRB(t_cheapest cost, t_node **head_a, t_node **tail_a, t_node **
             rrb(head_b, tail_b, 's');
     }
 }
-
 static void RRX_RB(t_cheapest cost, t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
 {
     while (cost.iterations-- > 0)
@@ -57,7 +65,6 @@ static void RRX_RB(t_cheapest cost, t_node **head_a, t_node **tail_a, t_node **h
     while (cost.other_r-- > 0)
         rb(head_b, tail_b, 's');
 }
-
 static void RX_RRB(t_cheapest cost, t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
 {
     while (cost.iterations-- > 0)
@@ -65,7 +72,6 @@ static void RX_RRB(t_cheapest cost, t_node **head_a, t_node **tail_a, t_node **h
     while (cost.other_r-- > 0)
         rrb(head_b, tail_b, 's');
 }
-
 void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
 {
     t_cheapest cost;
@@ -86,7 +92,6 @@ void finish(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
         pa(head_a, tail_a, head_b, tail_b, 's');
     }
 }
-
 t_cheapest return_cheapest_arr(t_node **head_b, t_node **head_a, t_node **tail_a, t_node **tail_b)
 {
 
@@ -110,7 +115,6 @@ t_cheapest return_cheapest_arr(t_node **head_b, t_node **head_a, t_node **tail_a
     }
     return cheapest;
 }
-
 static int ft_count_rx(t_node *candidate, t_node **head_a, int total_len)
 {
     t_node *current;
@@ -127,7 +131,6 @@ static int ft_count_rx(t_node *candidate, t_node **head_a, int total_len)
     }
     return count_rx;
 }
-
 static int ft_count_rrx(t_node *candidate, t_node **head_a, t_node **tail_a, int total_len)
 {
     t_node *current;
@@ -147,7 +150,6 @@ static int ft_count_rrx(t_node *candidate, t_node **head_a, t_node **tail_a, int
     }
     return count_rrx;
 }
-
 static t_cheapest set_rotation(int count, int i, int move)
 {
     t_cheapest rotation;
@@ -158,7 +160,6 @@ static t_cheapest set_rotation(int count, int i, int move)
     rotation.price = INT_MAX;
     return rotation;
 }
-
 static t_cheapest set_arr(t_node *candidate, t_node **head_a, t_node **tail_a, int total_len, int i)
 {
     int count_rx;
@@ -172,7 +173,6 @@ static t_cheapest set_arr(t_node *candidate, t_node **head_a, t_node **tail_a, i
         return set_rotation(count_rrx, i, RRX);
 
 }
-
 t_cheapest *find_cheapest_path_a(t_node **head_b, t_node **head_a, t_node **tail_a, t_node **tail_b)
 {
     t_node *candidate;
@@ -196,8 +196,6 @@ t_cheapest *find_cheapest_path_a(t_node **head_b, t_node **head_a, t_node **tail
     }
     return arr;
 }
-
-
 t_cheapest *find_cheapest_path_rev_a(t_node **head_b, t_node **head_a, t_node **tail_a, t_node **tail_b)
 {
     t_node *candidate;
@@ -221,7 +219,6 @@ t_cheapest *find_cheapest_path_rev_a(t_node **head_b, t_node **head_a, t_node **
     }
     return arr;
 }
-
 t_cheapest find_cheapest_arr(t_cheapest *arr, t_node **head)
 {
     t_cheapest smallest;
@@ -248,7 +245,6 @@ t_cheapest find_cheapest_arr(t_cheapest *arr, t_node **head)
     free(arr);
     return smallest;
 }
-
 t_cheapest price_calc(t_cheapest arr)
 {
     t_cheapest stack;
@@ -260,4 +256,3 @@ t_cheapest price_calc(t_cheapest arr)
         stack.price = arr.other_r;
    return stack;
 }   
-

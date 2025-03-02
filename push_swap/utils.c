@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/02 11:37:12 by codespace         #+#    #+#             */
+/*   Updated: 2025/03/02 12:27:54 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -22,7 +32,6 @@ void free_stack(t_node **head, t_node **tail)
     *head = NULL;
     *tail = NULL;
 }
-
 void free_split_array(char **array)
 {
     int i = 0;
@@ -37,7 +46,6 @@ void free_split_array(char **array)
     }
     free(array);
 }
-
 int find_largest_elements_position(t_node *head)
 {
     t_node *current = head;
@@ -64,7 +72,6 @@ int find_largest_elements_position(t_node *head)
     }
     return largest_position;
 }
-
 int find_smallest_elements_position(t_node *head)
 {
     t_node *smallest_element = head;
@@ -91,7 +98,6 @@ int find_smallest_elements_position(t_node *head)
     }
     return smallest_position;
 }
-
 void bubble_up_a(t_node **head_a, t_node **tail_a)
 {
     int stack_len = stack_length(*head_a);

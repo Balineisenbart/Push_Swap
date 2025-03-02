@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   complex_sorting.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/02 11:36:42 by codespace         #+#    #+#             */
+/*   Updated: 2025/03/02 12:28:51 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void complex_sorting(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, int length)
 {
-    int chunk_size;
+    int        chunk_size;
     static int current_chunk;
     static int previous_chunk;
 
@@ -17,12 +29,11 @@ void complex_sorting(t_node **head_a, t_node **tail_a, t_node **head_b, t_node *
             push_chunk(head_a, tail_a, head_b, tail_b, length);
         previous_chunk = current_chunk - 1;
         current_chunk = previous_chunk - chunk_size + 1;
-        finish(head_a, tail_a, head_b, tail_b);     
+        finish(head_a, tail_a, head_b, tail_b);
     }
     if (needs_sorting(*head_a))
         bubble_up_a(head_a, tail_a);
 }
-
 void push_chunk(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, int length)
 {
     int cheapest;
@@ -30,7 +41,7 @@ void push_chunk(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail
     if ((*head_a)->chunk)
     {
         (*head_a)->chunk = 0;
-        pb(head_a, tail_a, head_b,  tail_b, 's');
+        pb(head_a, tail_a, head_b, tail_b, 's');
     }
     else
     {

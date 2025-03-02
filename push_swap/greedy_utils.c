@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   greedy_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/02 11:37:02 by codespace         #+#    #+#             */
+/*   Updated: 2025/03/02 12:27:33 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int determine_chunk_number(int length)
 {
@@ -18,7 +28,6 @@ int determine_chunk_number(int length)
         chunk_size++;
     return chunk_size;
 }
-
 void define_chunk(t_node **head, int current_chunk, int previous_chunk)
 {
     t_node *current;
@@ -36,7 +45,6 @@ void define_chunk(t_node **head, int current_chunk, int previous_chunk)
         i++;
     }
 }
-
 int find_cheapest_chunk_element(t_node *head, int stack_len)
 {
     t_node *top;
@@ -62,7 +70,6 @@ int find_cheapest_chunk_element(t_node *head, int stack_len)
     else
         return bottom_steps *= -1;
 }
-
 bool contains_chunk(t_node *head_a)
 {
     t_node *current;

@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   index_input.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/02 11:36:02 by codespace         #+#    #+#             */
+/*   Updated: 2025/03/02 12:30:41 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -22,7 +32,6 @@ void index_input(t_node **head_a, int size)
     arr = sort_arr(arr, size);
     indexing(arr, head_a, size);
 }
-
 int *sort_arr(int *arr, int size)
 {
     int i;
@@ -48,7 +57,6 @@ int *sort_arr(int *arr, int size)
     }
     return arr;
 }
-
 void indexing(int *arr, t_node **head_a, int size)
 {
     t_node *current;

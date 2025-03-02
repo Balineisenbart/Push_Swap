@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/02 11:36:28 by codespace         #+#    #+#             */
+/*   Updated: 2025/03/02 12:29:10 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -14,7 +25,6 @@ void    pb(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, c
     if (flag == 's')
         write(1, "pb\n", 3);
 }
-
 void pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, char flag)
 {
     t_node *temp;
@@ -28,7 +38,6 @@ void pa(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b, char
     if (flag == 's')
         write(1, "pa\n", 3);
 }
-
 t_node *maintain_circularity(t_node **head, t_node **tail)
 {
     t_node *temp;
@@ -47,7 +56,6 @@ t_node *maintain_circularity(t_node **head, t_node **tail)
     }
     return temp;
 }
-
 void push_to_other_stack(t_node **head_other, t_node **tail_other, t_node *temp)
 {
     if (*head_other == NULL) 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/02 11:35:54 by codespace         #+#    #+#             */
+/*   Updated: 2025/03/02 12:30:24 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int count_words(const char *s, char d)
@@ -20,7 +32,6 @@ static int count_words(const char *s, char d)
     }
     return (cnt);
 }
-
 static char *ft_strncpy(char *dst, const char *src, size_t n)
 {
     size_t i;
@@ -38,7 +49,6 @@ static char *ft_strncpy(char *dst, const char *src, size_t n)
     }
     return (dst);
 }
-
 static char *strdup_split(const char *start, const char *end)
 {
     char *word;
@@ -50,7 +60,6 @@ static char *strdup_split(const char *start, const char *end)
     word[end - start] = '\0';
     return (word);
 }
-
 static char **main_split(const char *str, char **res, char d, int i)
 {
     const char *start;
@@ -77,8 +86,6 @@ static char **main_split(const char *str, char **res, char d, int i)
     res[i] = NULL;
     return res;
 }
-
-
 char **ft_split(const char *str, char d)
 {
     char **res;
@@ -93,9 +100,6 @@ char **ft_split(const char *str, char d)
     res = main_split(str, res, d, 0);
     return (res);
 }
-
-
-
 long	ft_atoi(const char *str)
 {
 	long	res;

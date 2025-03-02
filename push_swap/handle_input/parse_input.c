@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_input.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/02 11:36:14 by codespace         #+#    #+#             */
+/*   Updated: 2025/03/02 12:31:11 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -11,7 +22,6 @@ int parse_input(int argc, char **argv, t_node **stack, t_node **tail)
         result = more_args(argc, argv, stack, tail);
     return result;
 }
-
 int two_args(char **argv, t_node **stack, t_node **tail)
 {
     int i;
@@ -38,7 +48,6 @@ int two_args(char **argv, t_node **stack, t_node **tail)
     free_split_array(numbers);
     return 1;
 }
-
 int more_args(int argc, char **argv, t_node **stack, t_node **tail)
 {
     int i;
@@ -61,7 +70,6 @@ int more_args(int argc, char **argv, t_node **stack, t_node **tail)
     }
     return 1;
 }
-
 static void init_new_node(t_node *new_node, int input_value)
 {
     new_node->chunk = 0;
@@ -70,7 +78,6 @@ static void init_new_node(t_node *new_node, int input_value)
     new_node->next = NULL;
     new_node->prev = NULL;
 }
-
 void add_to_stack(t_node **head, t_node **tail, int input_value)
 {
     t_node *new_node = malloc (sizeof(t_node));
