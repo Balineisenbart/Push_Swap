@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 11:36:42 by codespace         #+#    #+#             */
-/*   Updated: 2025/03/02 16:32:36 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/02 17:00:04 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	push_chunk(t_node **head_a, t_node **tail_a, t_node **head_b,
 	if ((*head_a)->chunk)
 	{
 		(*head_a)->chunk = 0;
-		pb(head_a, tail_a, head_b, tail_b, 's');
+		pb(head_a, tail_a, head_b, tail_b);
 	}
 	else
 	{

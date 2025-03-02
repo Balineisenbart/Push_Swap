@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 16:20:48 by codespace         #+#    #+#             */
-/*   Updated: 2025/03/02 16:25:00 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/02 16:42:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_cheapest	set_arr(t_node *candidate, t_node **head_a, t_node **tail_a, int i)
 	int	count_rrx;
 	int	total_len;
 
-	total_len = stack_length(candidate) + stack_length(head_a);
+	total_len = stack_length(candidate) + stack_length(*head_a);
 	count_rx = ft_count_rx(candidate, head_a, total_len);
 	count_rrx = ft_count_rrx(candidate, head_a, tail_a, total_len);
 	if (count_rx <= count_rrx)

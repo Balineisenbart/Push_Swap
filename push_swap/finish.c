@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 11:37:00 by codespace         #+#    #+#             */
-/*   Updated: 2025/03/02 16:20:46 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/02 16:56:58 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,17 @@ t_cheapest	*find_cheapest_path_a(t_node **head_b, t_node **head_a,
 	t_cheapest	*arr;
 	int			i;
 	int			n;
-	int			total_len;
 
 	candidate = *head_b;
 	i = 0;
 	n = stack_length(*head_b);
-	total_len = stack_length(*head_a) + stack_length(*head_b);
 	arr = malloc(n * sizeof(t_cheapest));
 	if (!arr)
 		return (free(arr), free_stack(head_a, tail_a), free_stack(head_b,
 				tail_b), NULL);
 	while (i < n)
 	{
-		arr[i] = set_arr(candidate, head_a, tail_a, total_len, i);
+		arr[i] = set_arr(candidate, head_a, tail_a, i);
 		i++;
 		candidate = candidate->next;
 	}
@@ -45,19 +43,17 @@ t_cheapest	*find_cheapest_path_rev_a(t_node **head_b, t_node **head_a,
 	t_cheapest	*arr;
 	int			i;
 	int			n;
-	int			total_len;
 
 	candidate = *head_b;
 	i = 0;
 	n = stack_length(*head_b);
-	total_len = stack_length(*head_a) + stack_length(*head_b);
 	arr = malloc(n * sizeof(t_cheapest));
 	if (!arr)
 		return (free(arr), free_stack(head_a, tail_a), free_stack(head_b,
 				tail_b), NULL);
 	while (i < n)
 	{
-		arr[i] = set_arr(candidate, head_a, tail_a, total_len, i);
+		arr[i] = set_arr(candidate, head_a, tail_a, i);
 		i++;
 		candidate = candidate->prev;
 	}
@@ -75,13 +71,13 @@ void	finish(t_node **head_a, t_node **tail_a, t_node **head_b,
 	{
 		cost = return_cheapest_arr(head_b, head_a, tail_a, tail_b);
 		if (cost.move == RX && cost.dir == RB)
-			rx_rb(cost, head_a, tail_a, head_b, tail_b);
+			rx_rb(head_a, tail_a, head_b, tail_b);
 		else if (cost.move == RRX && cost.dir == RB)
-			rrx_rb(cost, head_a, tail_a, head_b, tail_b);
+			rrx_rb(head_a, tail_a, head_b, tail_b);
 		else if (cost.move == RRX && cost.dir == RRB)
-			rrx_rrb(cost, head_a, tail_a, head_b, tail_b);
+			rrx_rrb(head_a, tail_a, head_b, tail_b);
 		else
-			rx_rrb(cost, head_a, tail_a, head_b, tail_b);
-		pa(head_a, tail_a, head_b, tail_b, 's');
+			rx_rrb(head_a, tail_a, head_b, tail_b);
+		pa(head_a, tail_a, head_b, tail_b);
 	}
 }

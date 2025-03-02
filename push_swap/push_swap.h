@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 11:37:09 by codespace         #+#    #+#             */
-/*   Updated: 2025/03/02 16:32:22 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/02 16:58:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,20 @@ void				sort_2_or_3_elements(t_node **head, t_node **tail);
 void				sort_4_or_5_elements(t_node **head_a, t_node **tail_a,
 						t_node **head_b, t_node **tail_b);
 void				pa(t_node **head_a, t_node **tail_a, t_node **head_b,
-						t_node **tail_b, char flag);
+						t_node **tail_b);
 void				pb(t_node **head_a, t_node **tail_a, t_node **head_b,
-						t_node **tail_b, char flag);
+						t_node **tail_b);
 t_node				*maintain_circularity(t_node **head, t_node **tail);
 void				push_to_other_stack(t_node **head_other,
 						t_node **tail_other, t_node *temp);
 void				ra(t_node **head_a, t_node **tail_a, char flag);
 void				rb(t_node **head_b, t_node **tail_b, char flag);
 void				rr(t_node **head_a, t_node **tail_a, t_node **head_b,
-						t_node **tail_b, char flag);
+						t_node **tail_b);
 void				rra(t_node **head_a, t_node **tail_a, char flag);
 void				rrb(t_node **head_b, t_node **tail_b, char flag);
 void				rrr(t_node **head_a, t_node **tail_a, t_node **head_b,
-						t_node **tail_b, char flag);
+						t_node **tail_b);
 void				sa(t_node **head_a, t_node **tail_a, char flag);
 void				add_to_stack(t_node **head, t_node **tail, int input_value);
 void				bubble_up_a(t_node **head_a, t_node **tail_a);
@@ -110,13 +110,13 @@ t_cheapest			price_calc(t_cheapest cost);
 t_cheapest			set_arr(t_node *candidate, t_node **head_a, t_node **tail_a,
 						int i);
 
-void				rx_rb(t_cheapest cost, t_node **head_a, t_node **tail_a,
+void				rx_rb(t_node **head_a, t_node **tail_a,
 						t_node **head_b, t_node **tail_b);
-void				rrx_rrb(t_cheapest cost, t_node **head_a, t_node **tail_a,
+void				rrx_rrb(t_node **head_a, t_node **tail_a,
 						t_node **head_b, t_node **tail_b);
-void				rrx_rb(t_cheapest cost, t_node **head_a, t_node **tail_a,
+void				rrx_rb(t_node **head_a, t_node **tail_a,
 						t_node **head_b, t_node **tail_b);
-void				rx_rrb(t_cheapest cost, t_node **head_a, t_node **tail_a,
+void				rx_rrb(t_node **head_a, t_node **tail_a,
 						t_node **head_b, t_node **tail_b);
 
 #endif

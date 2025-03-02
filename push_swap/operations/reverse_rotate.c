@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 11:36:31 by codespace         #+#    #+#             */
-/*   Updated: 2025/03/02 16:34:50 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/02 16:50:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,9 @@ void	rrb(t_node **head_b, t_node **tail_b, char flag)
 		write(1, "rrb\n", 4);
 }
 
-void	rrr(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b,
-		char flag)
+void	rrr(t_node **head_a, t_node **tail_a, t_node **head_b, t_node **tail_b)
 {
 	rra(head_a, tail_a, 'n');
 	rrb(head_b, tail_b, 'n');
-	if (flag == 'd')
-		write(1, "rrr\n", 4);
+	write(1, "rrr\n", 4);
 }

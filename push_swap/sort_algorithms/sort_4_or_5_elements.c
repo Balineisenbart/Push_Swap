@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 11:36:58 by codespace         #+#    #+#             */
-/*   Updated: 2025/03/02 15:53:05 by codespace        ###   ########.fr       */
+/*   Updated: 2025/03/02 16:59:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void	sort_4_or_5_elements(t_node **head_a, t_node **tail_a, t_node **head_b,
 		while (stack_length((*head_a)) != 3)
 		{
 			bubble_up_a(head_a, tail_a);
-			pb(head_a, tail_a, head_b, tail_b, 's');
+			pb(head_a, tail_a, head_b, tail_b);
 			i++;
 		}
 		sort_2_or_3_elements(head_a, tail_a);
 		while (i != 0)
 		{
-			pa(head_a, tail_a, head_b, tail_b, 's');
+			pa(head_a, tail_a, head_b, tail_b);
 			i--;
 		}
 	}
